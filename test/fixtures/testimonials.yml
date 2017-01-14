@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cust_name: MyString
+  cust_desc: MyString
+  stars: 1
+  content: MyText
+  visible: false
+
+two:
+  cust_name: MyString
+  cust_desc: MyString
+  stars: 1
+  content: MyText
+  visible: false
