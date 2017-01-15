@@ -1,7 +1,7 @@
 class TestimonialsController < ApplicationController
 
 	def index
-		@testims = Testimonial.all
+    	@testimonials = Testimonial.where(visible: true)
 	end
 	def show
 		@testim = Testimonial.find(params[:id])		

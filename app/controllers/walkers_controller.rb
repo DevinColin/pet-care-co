@@ -1,10 +1,11 @@
 class WalkersController < ApplicationController
 
+<<<<<<< HEAD
 	def index
 		@walkers = Walker.all
 	end
 	def show
-		@walker = Walker.find(params[:id])
+    	@walkers = Walker.where(active: true)
 	end
 	def new
 		

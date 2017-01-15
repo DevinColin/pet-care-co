@@ -1,0 +1,8 @@
+I'm testimonials <br><br>  
+
+<% @testimonials.each do |t| %>
+  <strong>Customer name: </strong><%= t.cust_name %><br>
+  <strong>Custom description: </strong><%= t.cust_desc %><br>
+  <strong>Stars: </strong><%= t.stars %><br>
+  <strong>Content: </strong><%= t.content %><br>
+<% end %>
