@@ -12,13 +12,20 @@
   </head>
 
   <body>
+
     <%= render 'layouts/header' %>
 <!-- devise default syntax for flash display -->
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
-    <%= yield %>
+    <div class="content-grid mdl-grid">
+      <div class="container">
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
+    </div>
 
     <%= render 'layouts/footer' %>
+
   </body>
 </html>
