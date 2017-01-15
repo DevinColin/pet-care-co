@@ -2,17 +2,23 @@
 <html>
   <head>
     <title>PetCareCo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
   </head>
 
   <body>
+    <%= render 'layouts/header' %>
 <!-- devise default syntax for flash display -->
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
     <%= yield %>
+
+    <%= render 'layouts/footer' %>
   </body>
 </html>
