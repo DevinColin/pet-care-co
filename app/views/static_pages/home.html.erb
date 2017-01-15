@@ -9,3 +9,9 @@ I'm proof that the MDL Gem loaded and was connected properly. If the ripple effe
 <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
   <i class="material-icons">add</i>
 </button>
+
+<h2>Hopefully landing page content shows below here</h2>
+<% @contents.each do |content| %>
+  <%= content.heading %>
+  <%= content.text %><br><br>
+<% end %>

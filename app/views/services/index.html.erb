@@ -1,1 +1,14 @@
 I'm services controller and services
+
+<% @services.each do |service| %>
+  Service Name:  ------<%= content_tag :p, service.name %><br><br>
+  Service Highlights:  ------<%= content_tag :div, service.highlights, style: "white-space: pre-wrap" %><br><br>
+  Service Descrtipion:  ------<%= content_tag :p, service.description %><br><br>
+<% end %>
+
+<br><br><br><br>
+
+<% @contents.each do |content| %>
+  <%= content.heading %>
+  <%= content.text %><br><br>
+<% end %>
