@@ -8,6 +8,13 @@ Rails.application.routes.draw do
   # Devise user routes are there without it
   # devise_for :users
 
+  # This code is suggested by devise when generating user controllers:
+    #   Rails.application.routes.draw do
+    #   devise_for :users, controllers: {
+    #     sessions: 'users/sessions'
+    #   }
+    # end
+
   resources :walkers, :services, :testimonials, :contents
 
 end
