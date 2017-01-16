@@ -14,24 +14,27 @@
   <body>
     <div class="mdl-layout mdl-js-layout">
       <%= render 'layouts/header' %>
-  <!-- devise default syntax for flash display -->
 
-      <div class="mdl-layout__content">
+      <% if current_user %>
+        <div class="admin-coloring mdl-layout__content">
+      <% else %>
+        <div class="site-coloring mdl-layout__content">
+      <% end %>
 
         <div class="mdl-grid">
-          <div class="page-content">
 
             <div class="alert-messages">
               <p class="notice"><%= notice %></p>
               <p class="alert"><%= alert %></p>
             </div>
             <%= yield %>
-          </div>
 
-          </div>
+        </div>
 
       </div>
+
       <%= render 'layouts/footer' %>
+
 
     </div>
   </body>

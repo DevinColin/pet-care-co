@@ -9,4 +9,8 @@ class StaticPagesController < ApplicationController
     @contents = Content.where("page like ?", "%contact%")
   end
 
+  def admin
+    
+  end
+
 end
