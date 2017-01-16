@@ -11,12 +11,18 @@ class ServicesController < ApplicationController
 		
 	end
 	def new
-		
+		if !current_user
+			redirect_to "/services"
+		end
+		@service = Service.new
 	end
 	def create
 		
 	end
 	def edit
+		if !current_user
+			redirect_to "/services"
+		end
 		@service = Service.find(params[:id])		
 	end
 	def update

@@ -7,12 +7,18 @@ class TestimonialsController < ApplicationController
 		@testim = Testimonial.find(params[:id])		
 	end
 	def new
-		
+		if !current_user
+			redirect_to "testimonials"
+		end
+		@testim = Tesimonial.new
 	end
 	def create
 		
 	end
 	def edit
+		if !current_user
+			redirect_to "testimonials"
+		end
 		@testim = Testimonial.find(params[:id])
 	end
 	def update
