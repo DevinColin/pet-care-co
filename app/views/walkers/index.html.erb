@@ -4,14 +4,39 @@ I'm walkers controler and about link
 	<%= link_to "Create new walker", new_walker_path %>
 <% end %>
 
+<div id="walker-list">
+	<h3>The Company</h3>
+	<% @walkers.each do |w| %>
+		<% if w.active || current_user %>
+			<div class="walker-list-item">
+				<div class="walker-list-hrule"></div>
+				<h4><%= w.fname %> | <%= w.role %><% if !w.active %> | (inactive) <% end -%></h4>
+			</div>
+		<% end -%>
+	<% end -%>
+</div>
+
+<div class="walker-profile about-content">
+	<div class="walker-profile-image">
+		<!-- rails syntax for including image, whatever, can't remember right now -->
+	</div>
+	<h2><%= @contents.heading %></h2>
+	<p><%= @contents.text %></p>
+	<% if current_user %>
+		<%= link_to "Edit", edit_content_path(@contents) %>
+	<% end -%>
+</div>
+
 <% @walkers.each do |w| %>
 	<% if w.active || current_user %>
-		<h3><%= w.fname %> <% if w.lname %><%= w.lname %><% end %></h3>
-		<h4><%= w.role %></h4>
-		<p><%= w.bio %></p><br>
-		<% if current_user %>
-			<%= link_to "Edit", edit_walker_path %>
-		<% end -%>
-		<br><br>
+		<div class="walker-profile">
+			<h3><%= w.fname %> <% if w.lname %><%= w.lname %><% end %></h3>
+			<h4><%= w.role %></h4>
+			<p><%= w.bio %></p><br>	
+			<% if current_user %>
+				<%= link_to "Edit", edit_walker_path(w) %>
+			<% end -%>
+			<br><br>
+		</div>
 	<% end %>
 <% end %>

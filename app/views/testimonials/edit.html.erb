@@ -10,7 +10,7 @@
 	<%= f.label "Testimonial: " %>
 	<%= f.text_area :content, id: "content-text" %>
 	<%= f.label "Make customer visible? " %>
-	<%= f.check_box :visible, default: true %><br>
+	<%= f.check_box :visible, default: @testim.visible %><br>
 	<%= f.label "Upload image" %>
 	<%= f.file_field :avatar %><br>
 	<%= f.submit %>

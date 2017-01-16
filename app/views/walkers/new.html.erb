@@ -1,6 +1,6 @@
-<h2>Edit <%= @walker.fname %>'s profile</h2>
+<h2>Add a new walker</h2>
 
-<%= form_for @walker, url: {action: "update", id: @walker} do %>
+<%= form_for @walker, url: {action: "create"} %>
 	<%= f.label "First name: " %>
 	<%= f.text_field :fname, autofocus: true %><br>
 	<%= f.label "Last name: " %>
@@ -9,8 +9,8 @@
 	<%= f.text_field :role %><br>
 	<%= f.label "Bio: " %>
 	<%= f.text_area :bio, id: "bio-text" %><br>
-	<%= f.label "Currently active? " %>
-	<%= f.check_box :active, default: @walker.active %>
+	<%= f.label "Active walker? " %>
+	<%= f.check_box :active, default: true %>
 	<%= f.label " Upload image " %>
 	<%= f.file_field :avatar %><br>
 	<%= f.submit %>
@@ -19,4 +19,3 @@
 <script>
 	CKEDITOR.replace("bio-text");
 </script>
-
