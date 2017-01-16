@@ -1,12 +1,26 @@
-<div class="header-content mdl-grid">
 
-    I'm the header
-
-    <%= link_to "Home", root_path %><br>
-    <%= link_to "About", about_path %><br>
-    <%= link_to "Services", services_path %><br>
-    <%= link_to "Testimonials", testimonials_path %><br>
-    <%= link_to "Contact", contact_path %><br>
-
-    <hr>
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title">
+        Philadelphia Pet Care Company
+      </span>
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+        <%= link_to "Home", root_path, class: "mdl-navigation__link" %><br>
+        <%= link_to "About", about_path, class: "mdl-navigation__link" %><br>
+        <%= link_to "Services", services_path, class: "mdl-navigation__link" %><br>
+        <%= link_to "Testimonials", testimonials_path, class: "mdl-navigation__link" %><br>
+        <%= link_to "Contact", contact_path, class: "mdl-navigation__link" %><br>
+      </nav>
+  </div>
+</header>
+<div class="mdl-layout__drawer">
+  <span class="mdl-layout-title">PPCC</span>
+    <nav class="mdl-navigation">
+      <%= link_to "Home", root_path, class: "mdl-navigation__link" %><br>
+      <%= link_to "About", about_path, class: "mdl-navigation__link" %><br>
+      <%= link_to "Services", services_path, class: "mdl-navigation__link" %><br>
+      <%= link_to "Testimonials", testimonials_path, class: "mdl-navigation__link" %><br>
+      <%= link_to "Contact", contact_path, class: "mdl-navigation__link" %><br>
+    </nav>
 </div>

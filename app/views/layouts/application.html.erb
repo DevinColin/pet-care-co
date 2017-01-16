@@ -12,20 +12,27 @@
   </head>
 
   <body>
+    <div class="mdl-layout mdl-js-layout">
+      <%= render 'layouts/header' %>
+  <!-- devise default syntax for flash display -->
 
-    <%= render 'layouts/header' %>
-<!-- devise default syntax for flash display -->
+      <div class="mdl-layout__content">
 
-    <div class="content-grid mdl-grid">
-      <div class="container">
+        <div class="mdl-grid">
+          <div class="page-content">
 
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
+            <div class="alert-messages">
+              <p class="notice"><%= notice %></p>
+              <p class="alert"><%= alert %></p>
+            </div>
+            <%= yield %>
+          </div>
+
+          <%= render 'layouts/footer' %>
+          </div>
+
+      </div>
+
     </div>
-    </div>
-
-    <%= render 'layouts/footer' %>
-
   </body>
 </html>
