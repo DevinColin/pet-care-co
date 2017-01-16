@@ -8,7 +8,7 @@ class ServicesController < ApplicationController
 	    @contents = Content.where("page like ?", "%seRVice%")
 	end
 	def show
-		@service = Service.find(params[:id])		
+		
 	end
 	def new
 		
@@ -17,10 +17,12 @@ class ServicesController < ApplicationController
 		
 	end
 	def edit
-		
+		@service = Service.find(params[:id])		
 	end
 	def update
-		
+		service = Service.find(params[:id])
+		service.update(service_params)
+		redirect_to "/services"
 	end
 	def destroy
 		@service = Service.find(params[:id])	
@@ -30,6 +32,12 @@ class ServicesController < ApplicationController
 		else
 			# Throw error: not allowed to delete
 		end
+	end
+
+	private
+
+	def service_params
+		params.require(:service).permit(:name, :highlights, :description, :avatar)
 	end
 
 end

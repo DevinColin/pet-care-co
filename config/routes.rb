@@ -22,4 +22,7 @@ Rails.application.routes.draw do
 
   resources :walkers, :services, :testimonials, :contents
 
+  # Engine for rich text editor
+  mount Ckeditor::Engine => '/ckeditor'
+
 end

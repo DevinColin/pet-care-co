@@ -1,7 +1,7 @@
 class TestimonialsController < ApplicationController
 
 	def index
-    	@testimonials = Testimonial.where(visible: true)
+    	@testims = Testimonial.where(visible: true)
 	end
 	def show
 		@testim = Testimonial.find(params[:id])		
@@ -13,10 +13,12 @@ class TestimonialsController < ApplicationController
 		
 	end
 	def edit
-		
+		@testim = Testimonial.find(params[:id])
 	end
 	def update
-		
+		testim = Testimonial.find(params[:id])
+		testim.update(testim_params)
+		redirect_to "/testimonials"
 	end
 	def destroy
 		@testim = Testimonial.find(params[:id])	
@@ -26,6 +28,12 @@ class TestimonialsController < ApplicationController
 		else
 			# Throw error: not allowed to delete
 		end
+	end
+
+	private
+
+	def testim_params
+		params.require(:testimonial).permit(:cust_name, :cust_desc, :stars, :content, :visible, :avatar)
 	end
 
 end
