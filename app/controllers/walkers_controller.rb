@@ -1,6 +1,5 @@
 class WalkersController < ApplicationController
 
-<<<<<<< HEAD
 	def index
 		@walkers = Walker.all
 	end
@@ -14,7 +13,7 @@ class WalkersController < ApplicationController
 		
 	end
 	def edit
-		
+		@walker = Walker.find(params[:id])
 	end
 	def update
 		
@@ -27,6 +26,12 @@ class WalkersController < ApplicationController
 		else
 			# Throw error: not allowed to delete
 		end
+	end
+
+	private
+
+	def walker_params
+		
 	end
 
 end
