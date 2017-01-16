@@ -9,6 +9,20 @@ Rails.application.routes.draw do
   get '/services',          to: 'services#index'
   get '/contact',           to: 'static_pages#contact',     as: 'contact'
 
+  # This line throws a redundancy error if you un-comment it and run rails routes in the terminal
+  # Devise user routes are there without it
   # devise_for :users
+
+  # This code is suggested by devise when generating user controllers:
+    #   Rails.application.routes.draw do
+    #   devise_for :users, controllers: {
+    #     sessions: 'users/sessions'
+    #   }
+    # end
+
+  resources :walkers, :services, :testimonials, :contents
+
+  # Engine for rich text editor
+  mount Ckeditor::Engine => '/ckeditor'
 
 end

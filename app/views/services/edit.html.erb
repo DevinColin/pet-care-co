@@ -1,0 +1,18 @@
+<h2>Edit <%= @service.name %> details</h2>
+
+<%= form_for @service, url: {action: "update", id: @service} do |f| %>
+	<%= f.label "Name of service" %>
+	<%= f.text_field :name %><br>
+	<%= f.label "Service details (prices, hours, etc.)" %>
+	<%= f.text_area :highlights, id: "highlights-text" %><br>
+	<%= f.label "Description" %>
+	<%= f.text_area :description, id: "description-text" %><br>
+	<%= f.label "Upload image" %>
+	<%= f.file_field :avatar %><br>
+	<%= f.submit %>
+<% end %>
+
+<script>
+	CKEDITOR.replace("highlights-text")
+	CKEDITOR.replace("description-text")
+</script>
