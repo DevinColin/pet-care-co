@@ -1,0 +1,21 @@
+<h2>Edit <%= @testim.cust_name %>'s Testimonial (#<%= @testim.id %>)</h2>
+
+<%= form_for @testim, url: {action: "update", id: @testim} do	|f| %>
+	<%= f.label "Customer's name: " %>
+	<%= f.text_field :cust_name, autofocus: true %><br>
+	<%= f.label "Customer description: " %>
+	<%= f.text_field :cust_desc %><br>
+	<%= f.label "Customer's rating: " %>
+	<%= f.select :stars, [5,4,3,2,1] %><br>
+	<%= f.label "Testimonial: " %>
+	<%= f.text_area :content, id: "content-text" %>
+	<%= f.label "Make customer visible? " %>
+	<%= f.check_box :visible, default: true %><br>
+	<%= f.label "Upload image" %>
+	<%= f.file_field :avatar %><br>
+	<%= f.submit %>
+<% end %>
+
+<script>
+	CKEDITOR.replace("content-text");
+</script>

@@ -1,5 +1,17 @@
 I'm walkers controler and about link
 
+<% if current_user %>
+	<%= link_to "Create new walker", new_walker_path %>
+<% end %>
+
 <% @walkers.each do |w| %>
-<%= w.fname %>
+	<% if w.active || current_user %>
+		<h3><%= w.fname %> <% if w.lname %><%= w.lname %><% end %></h3>
+		<h4><%= w.role %></h4>
+		<p><%= w.bio %></p><br>
+		<% if current_user %>
+			<%= link_to "Edit", edit_walker_path %>
+		<% end -%>
+		<br><br>
+	<% end %>
 <% end %>
