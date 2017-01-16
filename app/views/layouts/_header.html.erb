@@ -10,6 +10,12 @@
         <%= link_to "Services", services_path, class: "mdl-navigation__link" %><br>
         <%= link_to "Testimonials", testimonials_path, class: "mdl-navigation__link" %><br>
         <%= link_to "Contact", contact_path, class: "mdl-navigation__link" %><br>
+        <% if !current_user %>
+          <%= link_to "Login", new_user_session_path, class: "mdl-navigation__link" %><br>
+        <% else %>
+          <%= link_to "Logout", destroy_user_session_path, class: "mdl-navigation__link" %><br>
+        <% end %>
+
       </nav>
   </div>
 </header>
@@ -21,5 +27,11 @@
       <%= link_to "Services", services_path, class: "mdl-navigation__link" %><br>
       <%= link_to "Testimonials", testimonials_path, class: "mdl-navigation__link" %><br>
       <%= link_to "Contact", contact_path, class: "mdl-navigation__link" %><br>
+      <% if !current_user %>
+        <%= link_to "Login", new_user_session_path, class: "mdl-navigation__link" %><br>
+      <% else %>
+        <%= link_to "Logout", destroy_user_session_path, class: "mdl-navigation__link" %><br>
+      <% end %>
+
     </nav>
 </div>
