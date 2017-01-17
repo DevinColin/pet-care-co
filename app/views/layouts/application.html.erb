@@ -21,17 +21,22 @@
         <div class="site-coloring mdl-layout__content">
       <% end %>
 
+      <div class="mdl-grid">
+
+        <div class="alert-messages">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+        </div>
+
+      </div>
+
         <div class="mdl-grid">
 
-            <div class="alert-messages">
-              <p class="notice"><%= notice %></p>
-              <p class="alert"><%= alert %></p>
-            </div>
             <%= yield %>
 
         </div>
 
-      </div>
+      </div> <!-- end background coloring content -->
 
       <%= render 'layouts/footer' %>
 
