@@ -1,0 +1,21 @@
+<h2>Add new customer testimonial</h2>
+
+<%= form_for @testim, url: {action: "create", controller: "testimonials"} do |f| %>
+	<%= f.label "Customer's name: " %>
+	<%= f.text_field :cust_name, autofocus: true %><br>
+	<%= f.label "Customer description: " %>
+	<%= f.text_field :cust_desc %><br>
+	<%= f.label "Number of stars: " %>
+	<%= f.select :stars, [5,4,3,2,1] %><br>
+	<%= f.label "Quoted text: " %>
+	<%= f.text_area :content, id: "content-text" %><br>
+	<%= f.label "Show on page? " %>
+	<%= f.check_box, :visible, default: true %>
+	<%= f.label " Upload image: " %>
+	<%= f.file_field :avatar %><br>
+	<%= f.submit %>
+<% end -%>
+
+<script>
+	CKEDITOR.replace("content-text")
+</script>

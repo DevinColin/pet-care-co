@@ -5,6 +5,8 @@
 	<%= f.text_field :heading %><br>
 	<%= f.label "Text: " %>
 	<%= f.text_area :text, id: "content-text" %><br>
+	<%= f.label "Page visible? " %>
+	<%= f.check_box :visible, default: @content.visible %>
 	<%= f.label "Upload image: " %>
 	<%= f.file_field :avatar %><br>
 	<%= f.submit %>

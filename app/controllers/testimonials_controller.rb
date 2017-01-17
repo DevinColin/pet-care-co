@@ -5,7 +5,7 @@ class TestimonialsController < ApplicationController
 	    @contents = Content.where("page like ?", "%testIMOnial%")    	
 	end
 	def show
-		@testim = Testimonial.find(params[:id])		
+
 	end
 	def new
 		if !current_user
