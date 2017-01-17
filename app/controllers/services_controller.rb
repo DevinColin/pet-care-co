@@ -8,7 +8,7 @@ class ServicesController < ApplicationController
 	    @contents = Content.where("page like ?", "%seRVice%")
 	end
 	def show
-		
+		@service = Service.find(params[:id])		
 	end
 	def new
 		if !current_user
@@ -17,7 +17,11 @@ class ServicesController < ApplicationController
 		@service = Service.new
 	end
 	def create
-		
+		if !current_user
+			redirect_to "/services"
+		end
+		@service = Service.create(service_params)
+		redirect_to "/services"
 	end
 	def edit
 		if !current_user
@@ -26,6 +30,9 @@ class ServicesController < ApplicationController
 		@service = Service.find(params[:id])		
 	end
 	def update
+		if !current_user
+			redirect_to "/services"
+		end
 		service = Service.find(params[:id])
 		service.update(service_params)
 		redirect_to "/services"

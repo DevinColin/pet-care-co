@@ -2,6 +2,7 @@ class TestimonialsController < ApplicationController
 
 	def index
     	@testims = Testimonial.where(visible: true)
+	    @contents = Content.where("page like ?", "%testIMOnial%")    	
 	end
 
 	def show
@@ -16,6 +17,9 @@ class TestimonialsController < ApplicationController
 	end
 
 	def create
+		if !current_user
+			redirect_to "/testimonials"
+		end
 		@testim = Testimonial.new(testim_params)
 		if @testim.save
 			redirect_to testimonials_path
@@ -32,6 +36,9 @@ class TestimonialsController < ApplicationController
 	end
 
 	def update
+		if !current_user
+			redirect_to "/testimonials"
+		end
 		testim = Testimonial.find(params[:id])
 		testim.update(testim_params)
 		redirect_to "/testimonials"
