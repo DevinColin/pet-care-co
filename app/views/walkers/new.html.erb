@@ -1,6 +1,6 @@
 <h2>Add a new walker</h2>
 
-<%= form_for @walker, url: {action: "create"} %>
+<%= form_for @walker, url: {action: "create", controller: "walkers"} %>
 	<%= f.label "First name: " %>
 	<%= f.text_field :fname, autofocus: true %><br>
 	<%= f.label "Last name: " %>

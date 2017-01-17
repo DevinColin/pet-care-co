@@ -1,0 +1,15 @@
+<h2>Edit base content for <%= @content.page %> page</h2>
+
+<%= form_for @content, url: {action: "update", id: @content} do |f| %>
+	<%= f.label "Content heading: ", autofocus: true %>
+	<%= f.text_field :heading %><br>
+	<%= f.label "Text: " %>
+	<%= f.text_area :text, id: "content-text" %><br>
+	<%= f.label "Upload image: " %>
+	<%= f.file_field :avatar %><br>
+	<%= f.submit %>
+<% end -%>
+
+<script>
+	CKEDITOR.replace("content-text")
+</script>

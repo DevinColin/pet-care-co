@@ -13,19 +13,20 @@ class ContentsController < ApplicationController
 		
 	end
 	def edit
-		
+		@content = Content.find(params[:id])		
 	end
 	def update
-		
+		@content = Content.find(params[:id])
+		@content.update(content_params)
+		redirect_to "/#{@content.path}"
 	end
 	def destroy
-		@content = Content.find(params[:id])	
-		if current_user.admin
-			# Throw confirm/warning: are you sure?
-			@content.destroy
-		else
-			# Throw error: not allowed to delete
-		end
+
 	end
 
+	private
+
+	def content_params
+		params.require(:content).permit(:heading, :text, :avatar)
+	end
 end
