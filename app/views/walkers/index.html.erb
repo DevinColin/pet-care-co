@@ -1,4 +1,4 @@
-I'm walkers controler and about link
+	I'm walkers controler and about link
 
 <% if current_user %>
 	<%= link_to "Create new walker", new_walker_path %>
@@ -16,16 +16,18 @@ I'm walkers controler and about link
 	<% end -%>
 </div>
 
-<div class="walker-profile about-content">
-	<div class="walker-profile-image">
-		<!-- rails syntax for including image, whatever, can't remember right now -->
+<% @contents.each do |c| %>
+	<div class="walker-profile about-content">
+		<div class="walker-profile-image">
+			<!-- rails syntax for including image, whatever, can't remember right now -->
+		</div>
+		<h2><%= c.heading %></h2>
+		<p><%= c.text %></p>
+		<% if current_user %>
+			<%= link_to "Edit", edit_content_path(c) %>
+		<% end -%>
 	</div>
-	<h2><%= @contents.heading %></h2>
-	<p><%= @contents.text %></p>
-	<% if current_user %>
-		<%= link_to "Edit", edit_content_path(@contents) %>
-	<% end -%>
-</div>
+<% end -%>
 
 <% @walkers.each do |w| %>
 	<% if w.active || current_user %>
