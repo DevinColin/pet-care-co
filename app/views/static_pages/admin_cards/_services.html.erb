@@ -1,0 +1,24 @@
+<% @services.each do |s| %>
+
+  <div class="mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col">
+    <div class="mdl-card__title mdl-color--red-300">
+      <h2 class="mdl-card__title-text"><%= s.name %></h2>
+    </div>
+    <div class="mdl-card__supporting-text mdl-card--border">
+      <%= s.highlights%>
+    </div>
+    <div class="mdl-card__actions ">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Edit </a>
+        <!-- ERB if else that handles active  -->
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Deactivate</a>
+        <!-- versus inactive services  -->
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Activate</a>
+        <!-- erb end -->
+      <a id="delete-service-<%= s.id %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Delete Service</a>
+    </div>
+  </div>
+
+<dialog>
+</dialog>
+
+<% end %>

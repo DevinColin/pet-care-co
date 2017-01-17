@@ -10,7 +10,9 @@ class StaticPagesController < ApplicationController
   end
 
   def admin
-    
+    @walkers = Walker.order(active: :desc)
+    @services = Service.all
+    @testimonials = Testimonial.order(visible: :desc)
   end
 
 end
