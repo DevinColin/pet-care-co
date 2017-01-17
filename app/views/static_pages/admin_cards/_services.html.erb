@@ -9,10 +9,16 @@
     </div>
     <div class="mdl-card__actions ">
       <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Edit </a>
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Deactivate</a>
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Activate</a>
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Delete Service</a>
+        <!-- ERB if else that handles active  -->
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Deactivate</a>
+        <!-- versus inactive services  -->
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Activate</a>
+        <!-- erb end -->
+      <a id="delete-service-<%= s.id %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Delete Service</a>
     </div>
   </div>
+
+<dialog>
+</dialog>
 
 <% end %>

@@ -4,11 +4,11 @@
 	<%= f.label "Service name: " %>
 	<%= f.text_field :name, autofocus: true %><br>
 	<%= f.label "Highlights (prices, hours, etc.): " %>
-	<%= f.text_area, :highlights, id: "highlight-text" %><br>
+	<%= f.text_area :highlights, id: "highlight-text" %><br>
 	<%= f.label "Description: " %>
-	<%= f.text_area, :description, id: "desc-text" %><br>
+	<%= f.text_area :description, id: "desc-text" %><br>
 	<%= f.label "Upload image: " %>
-	<%= f.file_field, :avatar %><br>
+	<%= f.file_field :avatar %><br>
 	<%= f.submit %>
 <% end -%>
 
