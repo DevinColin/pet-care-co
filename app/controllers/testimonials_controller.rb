@@ -4,28 +4,37 @@ class TestimonialsController < ApplicationController
     	@testims = Testimonial.where(visible: true)
 	    @contents = Content.where("page like ?", "%testIMOnial%")    	
 	end
-	def show
 
+	def show
+		@testim = Testimonial.find(params[:id])
 	end
+
 	def new
 		if !current_user
 			redirect_to "/testimonials"
 		end
-		@testim = Tesimonial.new
+		@testim = Testimonial.new
 	end
+
 	def create
 		if !current_user
 			redirect_to "/testimonials"
 		end
-		@testim = Testimonial.create(testim_params)		
-		redirect_to "/testimonials"
+		@testim = Testimonial.new(testim_params)
+		if @testim.save
+			redirect_to testimonials_path
+		else
+			redirect_to "/"
+		end
 	end
+
 	def edit
 		if !current_user
 			redirect_to "/testimonials"
 		end
 		@testim = Testimonial.find(params[:id])
 	end
+
 	def update
 		if !current_user
 			redirect_to "/testimonials"
@@ -34,8 +43,9 @@ class TestimonialsController < ApplicationController
 		testim.update(testim_params)
 		redirect_to "/testimonials"
 	end
+
 	def destroy
-		@testim = Testimonial.find(params[:id])	
+		@testim = Testimonial.find(params[:id])
 		if current_user.admin
 			# Throw confirm/warning: are you sure?
 			@testim.destroy
@@ -46,8 +56,8 @@ class TestimonialsController < ApplicationController
 
 	private
 
-	def testim_params
-		params.require(:testimonial).permit(:cust_name, :cust_desc, :stars, :content, :visible, :avatar)
-	end
+		def testim_params
+			params.require(:testimonial).permit(:cust_name, :cust_desc, :stars, :content, :visible, :avatar)
+		end
 
 end

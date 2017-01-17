@@ -9,7 +9,7 @@
 	<%= f.select :stars, [5,4,3,2,1] %><br>
 	<%= f.label "Testimonial: " %>
 	<%= f.text_area :content, id: "content-text" %>
-	<%= f.label "Make customer visible? " %>
+	<%= f.label "Make testimonial visible? " %>
 	<%= f.check_box :visible, default: @testim.visible %><br>
 	<%= f.label "Upload image" %>
 	<%= f.file_field :avatar %><br>
