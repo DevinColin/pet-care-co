@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170116181315) do
+ActiveRecord::Schema.define(version: 20170117014153) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
@@ -29,12 +29,14 @@ ActiveRecord::Schema.define(version: 20170116181315) do
     t.string   "page"
     t.string   "heading"
     t.text     "text"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "path"
+    t.boolean  "visible",             default: true
   end
 
   create_table "services", force: :cascade do |t|
