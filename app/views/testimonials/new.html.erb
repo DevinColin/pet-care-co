@@ -10,7 +10,7 @@
 	<%= f.label "Quoted text: " %>
 	<%= f.text_area :content, id: "content-text" %><br>
 	<%= f.label "Show on page? " %>
-	<%= f.check_box, :visible, default: true %>
+	<%= f.check_box :visible, checked: true %>
 	<%= f.label " Upload image: " %>
 	<%= f.file_field :avatar %><br>
 	<%= f.submit %>
