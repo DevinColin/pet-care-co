@@ -5,7 +5,7 @@ I'm services controller and services
 
 <% @services.each do |service| %>
   Service Name:  ------<%= content_tag :p, service.name %><br><br>
-  Service Highlights:  ------<%= content_tag :div, service.highlights.html_safe, style: "white-space: pre-wrap" %><br><br>
+  Service Highlights:  ------<%= content_tag :div, service.highlights.html_safe %><br><br>
   Service Descrtipion:  ------<%= content_tag :p, service.description.html_safe %><br><br>
   <% if current_user %>
   	<%= link_to "Edit", edit_service_path(service) %><br><br>
