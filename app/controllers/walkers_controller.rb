@@ -2,7 +2,7 @@ class WalkersController < ApplicationController
 
 	def index
 		@walkers = Walker.all
-	    @contents = Content.where("page like ?", "%about%").first
+	    @contents = Content.where("page like ?", "%about%")
 	end
 	def show
     	@walkers = Walker.where(active: true)
@@ -36,7 +36,7 @@ class WalkersController < ApplicationController
 		redirect_to "/walkers"
 	end
 	def destroy
-		@walker =Walker.find(params[:id])	
+		@walker =Walker.find(params[:id])
 		if current_user.admin
 			# Throw confirm/warning: are you sure?
 			@walker.destroy
