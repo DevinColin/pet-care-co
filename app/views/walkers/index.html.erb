@@ -11,6 +11,12 @@
 			<div class="walker-list-item">
 				<div class="walker-list-hrule"></div>
 				<h4><%= w.fname %> | <%= w.role %><% if !w.active %> | (inactive) <% end -%></h4>
+				<div class="walker-list-body" style="display: none">
+					<p><%= w.bio %></p><br>	
+					<% if current_user %>
+						<%= link_to "Edit", edit_walker_path(w) %>
+					<% end %>
+				</div>
 			</div>
 		<% end -%>
 	<% end -%>
@@ -29,16 +35,31 @@
 	</div>
 <% end -%>
 
-<% @walkers.each do |w| %>
-	<% if w.active || current_user %>
-		<div class="walker-profile">
-			<h3><%= w.fname %> <% if w.lname %><%= w.lname %><% end %></h3>
-			<h4><%= w.role %></h4>
-			<p><%= w.bio %></p><br>	
-			<% if current_user %>
-				<%= link_to "Edit", edit_walker_path(w) %>
-			<% end -%>
-			<br><br>
-		</div>
-	<% end %>
-<% end %>
+<script>
+	$(".walker-list-item").each(function(i) {
+		$(".walker-list-item").eq(i).on("click", function () {
+			if ($(".walker-list-body").eq(i)[0].style.display === "none")	{
+				for (var j = 0; j < $(".walker-list-body").length; j++) {
+					$(".walker-list-body").eq(j).slideUp("slow");
+				}
+				$(".walker-list-body").eq(i).slideDown("slow");
+			}
+		});
+	});
+</script>
+
+<!--
+# <% @walkers.each do |w| %>
+# 	<% if w.active || current_user %>
+# 		<div class="walker-profile">
+# 			<h3><%= w.fname %> <% if w.lname %><%= w.lname %><% end %></h3>
+# 			<h4><%= w.role %></h4>
+# 			<p><%= w.bio %></p><br>	
+# 			<% if current_user %>
+# 				<%= link_to "Edit", edit_walker_path(w) %>
+# 			<% end -%>
+# 			<br><br>
+# 		</div>
+# 	<% end %>
+# <% end %>
+-->
