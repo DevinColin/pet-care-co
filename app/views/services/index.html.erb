@@ -1,16 +1,39 @@
-I'm services controller and services
 <% if current_user %>
-	<%= link_to "Add new service", new_service_path %><br><br>
+	<div class="mdl-grid">
+		<div class="mdl-cell mdl-cell--6-col">
+			<%= link_to "Create a new service", new_service_path %>
+		</div>
+		<div class="mdl-cell mdl-cell--6-col">
+			Some content here maybe?
+		</div>
+	</div>
+	<hr>
 <% end %>
 
-<% @services.each do |service| %>
-  Service Name:  ------<%= content_tag :p, service.name %><br><br>
-  Service Highlights:  ------<%= content_tag :div, service.highlights.html_safe %><br><br>
-  Service Descrtipion:  ------<%= content_tag :p, service.description.html_safe %><br><br>
-  <% if current_user %>
-  	<%= link_to "Edit", edit_service_path(service) %><br><br>
-  <% end %>
-<% end %>
+<div class="mdl-grid">
+	<div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-tablet mdl-cell--12-phone">
+	<% @services.each do |service| %>
+		<div class="mdl-card">
+			<div class="services-card-photo mdl-card__title mdl-color--teal-300">
+	      <%= content_tag :h2 do %>
+					<%= content_tag :span, service.name, class: "mdl-card__title-text"%>
+					<%= content_tag :div, service.highlights, class: "mdl-card__subtitle-text"%>
+				<% end %>
+	    </div>
+			<div class="mdl-card__supporting-text">
+				<%= content_tag :p, service.description.html_safe %>
+			</div>
+			<div class="mdl-card__actions">
+				<%= link_to "Learn More", '#', class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+				<% if current_user %>
+					<%= link_to "Edit this service", edit_service_path(service), class: "font-color-edit mdl-button mdl-js-button mdl-js-ripple-effect"%>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+	</div>
+</div>
+
 
 <br><br><br><br>
 
