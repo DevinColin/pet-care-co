@@ -17,8 +17,13 @@
 <dialog id="select-service-<%= service.id %>" class="wide-dialog mdl-dialog">
   <h4 class="font-color-welcome mdl-dialog__title"><%= service.name %></h4>
   <hr>
-  <div class="mdl-dialog__content">
-    <p><%= service.description %></p>
+  <div class="flex flex-row mdl-dialog__content">
+		<div class="service-card__content-section-small">
+			<div class="service-card__highlight-dialog show-white-space"><%= service.highlights %></div>
+		</div>
+		<div class="service-card__content-section-large">
+			<p class="font-color-welcome"><%= service.description %></p>
+		</div>
   </div>
   <hr>
   <div class="mdl-dialog__actions">
