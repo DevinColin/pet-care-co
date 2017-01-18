@@ -4,13 +4,15 @@ Rails.application.routes.draw do
   resources :testimonials, :walkers, :services, :contents
 
   root "static_pages#home"
-  get '/testimonials',            to: 'testimonials#index'
-  get '/about',                   to: 'walkers#index'
-  get '/services',                to: 'services#index'
-  get '/contact',                 to: 'static_pages#contact',  as: 'contact'
-  get '/admin',                   to: 'static_pages#admin',    as: 'admin'
-  get '/walkers/deactivate/:id',  to: 'walkers#deactivate',    as: 'deactivate'
-  get '/walkers/activate/:id',    to: 'walkers#activate',      as: 'activate'
+  get '/testimonials',              to: 'testimonials#index'
+  get '/about',                     to: 'walkers#index'
+  get '/services',                  to: 'services#index'
+  get '/contact',                   to: 'static_pages#contact',   as: 'contact'
+  get '/admin',                     to: 'static_pages#admin',     as: 'admin'
+  get '/walkers/deactivate/:id',    to: 'walkers#deactivate',     as: 'deactivate'
+  get '/walkers/activate/:id',      to: 'walkers#activate',       as: 'activate'
+  get 'testimonials/invisible/:id', to: 'testimonials#invisible', as: 'invisible'
+  get 'testimonials/visible/:id',   to: 'testimonials#visible',   as: 'visible'
 
   # This code is suggested by devise when generating user controllers:
     #   Rails.application.routes.draw do

@@ -1,15 +1,53 @@
-I'm testimonials <br><br>  
+<div class="mdl-grid">
+	<% if current_user %>
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="/testimonials/new">Create new testimonial</a>
+	<% end %>
+</div>
+<% @testims.each_with_index do |t, i| %>
+	<% if t.visible || current_user %>
+		<div class="testim-card mdl-card mdl-shadow--3dp">
+			<div class="mdl-card__title mdl-color--purple-300">
+				<%= t.cust_name %><% if !t.visible %> | (not shown on page) <% end -%>
+			</div>
+			<div class="mdl-card__supporting-text mdl-color-text--grey-600">
+				<div class="testim-cust-desc"><%= t.cust_desc %></div>
+				<div class="testim-stars"><% t.stars.times do %> *<% end -%></div>
+				<div class="testim-content"><%= t.content.html_safe %></div>
+				<% if current_user %>
+					<div class="mdl-card__actions">
+						<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/walkers/<%= t.id %>/edit">Edit</a>
+						<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect invisible-button" data-remote="true" href="testimonials/invisible/<%= t.id %>" style="display: <% if t.visible %><%= 'inline-flex' %><% else %><%= 'none' %><% end -%>">Do Not Display</a>
+						<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect visible-button" data-remote="true" href="tesimonials/visible/<%= t.id %>" style="display: <% if !t.visible %><%= 'inline-flex' %><% else %><%= 'none' %><% end -%>">Show on Page</a>
+					</div>
+				<% end -%>
+			</div>
+		</div>
+		<% if t.avatar_file_name && t.visible %>
+			<div class="image-container">
+				<div class="image-frame mdl-shadow--3dp" style="background-image: url(<%= t.avatar.url %>);"></div>
+			</div>
+		<% end -%>
+	<% end -%>
+<% end -%>
 
-<% if current_user %>
-	<%= link_to "Create new testimonial", new_testimonial_path %><br>
-<% end %>
+<script>
+// Make testimonial invisible
+	$(".invisible-button").each(function() {
+		$(this).on("ajax:complete", function(event) {
+			$(event.target).hide();
+			$(event.target).next().show();
+		});
+	});
 
-<% @testims.each do |t| %>
-  <strong>Customer name: </strong><%= t.cust_name %><br>
-  <strong>Customer description: </strong><%= t.cust_desc %><br>
-  <strong>Stars: </strong><%= t.stars %><br>
-  <strong>Content: </strong><%= t.content.html_safe %><br>
-  <% if current_user %>
-  	<%= link_to "Edit", edit_testimonial_path(t) %><br>
-  <% end %>
-<% end %>
+// Make testimonial visible
+	$(".visible-button").each(function() {
+		$(this).on("ajax:complete", function(event) {
+			$(event.target).hide();
+			$(event.target).prev().show();
+		});
+	});
+
+	$(".image-container").each(function(i) {
+console.log(i);
+	});
+</script>	

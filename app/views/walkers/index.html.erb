@@ -24,7 +24,7 @@
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--8-col mdl-cell--2-offset mdl-card mdl-card--3dp walker-list-item"  style="min-height: 48px">
 					<div class="mdl-card__title mdl-color--teal-300">
-					<%= w.fname %> | <%= w.role %><% if !w.active %> | (inactive) <% end -%>
+						<%= w.fname %> | <%= w.role %><% if !w.active %> | (inactive) <% end -%>
 					</div>
 					<div class="walker-list-body" style="display: none">
 						<div class="mdl-card__supporting-text mdl-card--border mdl-color-text--grey-600" >
@@ -48,23 +48,6 @@
 		<% end -%>
 	<% end -%>
 </div>
-
-<!--
-<% @contents.each do |c| %>
-	<div class="walker-profile about-content">
-		<div class="walker-profile-image">
--->
-			<!-- rails syntax for including image, whatever, can't remember right now -->
-<!--
-		</div>
-		<h2><%= c.heading %></h2>
-		<p><%= c.text %></p>
-		<% if current_user %>
-			<%= link_to "Edit", edit_content_path(c) %>
-		<% end -%>
-	</div>
-<% end -%>
--->
 
 <script>
 // Reveal walker cards on click
@@ -102,19 +85,3 @@
 		});
 	});
 </script>
-
-<!--
-# <% @walkers.each do |w| %>
-# 	<% if w.active || current_user %>
-# 		<div class="walker-profile">
-# 			<h3><%= w.fname %> <% if w.lname %><%= w.lname %><% end %></h3>
-# 			<h4><%= w.role %></h4>
-# 			<p><%= w.bio %></p><br>	
-# 			<% if current_user %>
-# 				<%= link_to "Edit", edit_walker_path(w) %>
-# 			<% end -%>
-# 			<br><br>
-# 		</div>
-# 	<% end %>
-# <% end %>
--->

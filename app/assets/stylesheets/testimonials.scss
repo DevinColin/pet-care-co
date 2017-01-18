@@ -1,3 +1,41 @@
 // Place all the styles related to the Testimonials controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.testim-card	{
+	width: 50%;
+	display: inline-flex;
+	margin: 0 24px 24px 24px;
+	min-height: 300px;
+
+	.testim-stars	{
+		/*float: right;*/
+		font-weight: bolder;
+		color: gold;
+		font-size: 24px;
+	}
+}
+
+.image-container:nth-of-type(even)	{
+	float: left;
+}
+
+/*.image-container:nth-of-type(even)	{
+	float: right;
+}*/
+
+.image-container	{
+	float: right;
+	width: 45%;
+	text-align: center;
+}
+
+.image-frame	{
+	height: 300px;
+	width: 300px;
+	border-radius: 50%;
+	margin: 0 auto;
+	background-position: center;
+	background-size: 100%;
+	background-repeat: none;
+}

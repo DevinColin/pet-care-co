@@ -44,6 +44,16 @@ class TestimonialsController < ApplicationController
 		redirect_to "/testimonials"
 	end
 
+	def invisible
+		testim = Testimonial.find(params[:id])
+		testim.update(visible: false)
+	end
+
+	def visible
+		testim = Testimonial.find(params[:id])
+		testim.update(visible: true)
+	end
+
 	def destroy
 		@testim = Testimonial.find(params[:id])
 		if current_user.admin
