@@ -1,19 +1,66 @@
-<div class="mdl-cell mdl-cell--12-col">
-  <!-- Admin Menu card -->
-  <%= render 'static_pages/admin_cards/admin_menu_card' %>
+<div class="mdl-grid">
+
+  <div class="mdl-cell mdl-cell--6-col">
+    <!-- Admin Menu card -->
+    <%= render 'static_pages/admin_cards/admin_menu_card' %>
+  </div>
+
+  <div class="mdl-cell mdl-cell--6-col">
+    Placeholder for actions related to...
+    <!-- Admin Menu card -->
+    <%= render 'static_pages/admin_cards/admin_menu_card' %>
+  </div>
+
 </div>
 
-<div class="mdl-cell mdl-cell--4-col">
-  <!-- walker cards -->
-  <%= render '/static_pages/admin_cards/walker' %>
-</div>
+<div class="mdl-grid">
 
-<div class="mdl-cell mdl-cell--4-col">
-  <!-- Testimonials -->
-  <%= render '/static_pages/admin_cards/testimonials' %>
-</div>
+  <div class="mdl-cell mdl-cell--4-col">
 
-<div class="mdl-cell mdl-cell--4-col">
-  <!-- Services Cards -->
-  <%= render '/static_pages/admin_cards/services' %>
+    <div class="short-card mdl-card mdl-cell mdl-cell--12-col">
+      <div class="mdl-card__title mdl-color--teal-300">
+        <h2 class="mdl-card__title-text">
+          Walkers
+        </h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        Actions on walkers can be found here.
+      </div>
+    </div>
+    <!-- walker cards -->
+    <%= render '/static_pages/admin_cards/walker' %>
+  </div>
+
+  <div class="mdl-cell mdl-cell--4-col">
+
+    <div class="short-card mdl-card mdl-cell mdl-cell--12-col">
+      <div class="mdl-card__title mdl-color--purple-300">
+        <h2 class="mdl-card__title-text">
+          Testimonials
+        </h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        Actions on testimonials can be found here.
+      </div>
+    </div>
+    <!-- Testimonials -->
+    <%= render '/static_pages/admin_cards/testimonials' %>
+  </div>
+
+  <div class="mdl-cell mdl-cell--4-col">
+
+    <div class="short-card mdl-card mdl-cell mdl-cell--12-col">
+      <div class="mdl-card__title mdl-color--red-300">
+        <h2 class="mdl-card__title-text">
+          Services
+        </h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        Actions on services can be found here.
+      </div>
+    </div>
+    <!-- Services Cards -->
+    <%= render '/static_pages/admin_cards/services' %>
+  </div>
+
 </div>
