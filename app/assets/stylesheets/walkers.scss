@@ -4,5 +4,10 @@
 
 .walker-list-body	{
 	display: none;
-
+	.walker-pic	{
+		height: 200px;
+		width: 200px;
+		float: left;
+		margin-right: 12px;
+	}
 }

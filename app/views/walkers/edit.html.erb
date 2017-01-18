@@ -1,6 +1,6 @@
 <h2>Edit <%= @walker.fname %>'s profile</h2>
 
-<%= form_for @walker, url: {action: "update", id: @walker} do %>
+<%= form_for @walker, url: {action: "update", id: @walker} do |f| %>
 	<%= f.label "First name: " %>
 	<%= f.text_field :fname, autofocus: true %><br>
 	<%= f.label "Last name: " %>
