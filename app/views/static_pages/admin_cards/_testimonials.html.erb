@@ -8,11 +8,54 @@
     <%= t.short_description %>
   </div>
   <div class="mdl-card__actions ">
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Edit</a>
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Deactivate</a>
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Activate</a>
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Delete Testimonial</a>
+    <%= link_to "Edit", edit_testimonial_path(t.id), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+    <% if t.visible %>
+      <%= form_for :testimonial, url: "/testimonials/#{t.id}", method: "put" do |f| %>
+        <%= f.hidden_field :visible, value: false  %>
+        <%= f.submit "Hide Testimonial", class: "mdl-button mdl-button--colored" %>
+      <% end %>
+    <% else %>
+      <%= form_for :testimonial, url: "/testimonials/#{t.id}", method: "put" do |f| %>
+        <%= f.hidden_field :visible, value: true  %>
+        <%= f.submit "Show Testimonial", class: "mdl-button mdl-button--colored" %>
+      <% end %>
+    <% end %>
+    <% if current_user.admin %>
+      <a id="delete-testimonial-<%= t.id %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Delete Testimonial</a>
+    <% end %>
   </div>
 </div>
+
+<dialog id="select-testimonial-<%= t.id %>" class="mdl-dialog">
+  <h4 class="font-color-warning mdl-dialog__title">Delete this testimonial</h4>
+  <hr>
+  <div class="mdl-dialog__content">
+    <p>This action cannot be undone. You can also disable the testimonial by clicking "Deactivate"</p>
+  </div>
+  <hr>
+  <div class="mdl-dialog__actions">
+    <button type="button" class="mdl-button close">Nevermind</button>
+    <%= button_to "Delete!!", "/testimonials/#{t.id}", action: "delete", id: t.id, method: "delete", class: "font-color-warning mdl-button"%>
+  </div>
+</dialog>
+
+<script type="text/javascript">
+var dialogCreation = function(){
+    var dialog = document.querySelector('#select-testimonial-<%= t.id %>');
+        var showDialogButton = document.querySelector('#delete-testimonial-<%= t.id %>');
+        if (! dialog.showModal) {
+          dialogPolyfill.registerDialog(dialog);
+        }
+        showDialogButton.addEventListener('click', function() {
+          dialog.showModal();
+        });
+        dialog.querySelector('.close').addEventListener('click', function() {
+          dialog.close();
+        });
+  }
+
+  dialogCreation();
+
+  </script>
 
 <% end %>

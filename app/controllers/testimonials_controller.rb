@@ -2,7 +2,7 @@ class TestimonialsController < ApplicationController
 
 	def index
     	@testims = Testimonial.where(visible: true)
-	    @contents = Content.where("page like ?", "%testIMOnial%")    	
+	    @contents = Content.where("page like ?", "%testIMOnial%")
 	end
 
 	def show
@@ -49,6 +49,7 @@ class TestimonialsController < ApplicationController
 		if current_user.admin
 			# Throw confirm/warning: are you sure?
 			@testim.destroy
+			redirect_to admin_path
 		else
 			# Throw error: not allowed to delete
 		end
