@@ -57,7 +57,8 @@ class WalkersController < ApplicationController
 			@walker.destroy
 			redirect_to admin_path
 		else
-			# error handling if the user doesn't destroy
+			flash[:alert] = "Error: Admin function only"
+			redirect_to admin_path
 		end
 	end
 

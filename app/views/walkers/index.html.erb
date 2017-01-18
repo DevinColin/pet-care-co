@@ -28,9 +28,11 @@
 					</div>
 					<div class="walker-list-body" style="display: none">
 						<div class="mdl-card__supporting-text mdl-card--border mdl-color-text--grey-600" >
-							<div class="walker-pic">
-								<%= image_tag w.avatar, size: 200 %>
-							</div>
+							<% if w.avatar_file_name %>
+								<div class="walker-pic">
+									<%= image_tag w.avatar, size: 200 %>
+								</div>
+							<% end -%>
 							<%= w.bio %>
 						</div>
 						<% if current_user %>
