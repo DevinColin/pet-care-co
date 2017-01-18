@@ -41,6 +41,16 @@ class WalkersController < ApplicationController
  		redirect_to admin_path
  	end
 
+ 	def deactivate
+ 		walker = Walker.find(params[:id])
+ 		walker.update(active: false)
+ 	end
+
+ 	def activate
+ 		walker = Walker.find(params[:id])
+ 		walker.update(active: true)
+ 	end
+
 	def destroy
 		@walker = Walker.find(params[:id])
 		if current_user.admin

@@ -2,14 +2,14 @@
 	<div class="mdl-cell mdl-cell--12-col">
 		<h3>The Company</h3>
 		<% if current_user %>
-			<%= link_to "Create new walker", new_walker_path %>
+			<a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="/walkers/new">Create new walker</a>
+			<a class="mdl-button mdl-js-button mdl-js-ripple-effect show-all-button">Display all</a>
 		<% end %>
 	</div>
 </div>
 
 <div class="mdl-grid">
-	<!-- <div class="mdl-cell mdl-cell--3-col"></div> -->
-	<div class="mdl-cell mdl-cell--6-col mdl-cell--3-offset mdl-card mdl-shadow--3dp">
+	<div class="mdl-cell mdl-cell--8-col mdl-cell--2-offset mdl-card mdl-shadow--3dp">
 		<div class="mdl-card__title mdl-color--yellow-300">
 			<%= @contents[0].heading %>
 		</div>
@@ -22,7 +22,7 @@
 	<% @walkers.each do |w| %>
 		<% if w.active || current_user %>
 			<div class="mdl-grid">
-				<div class="mdl-cell mdl-cell--6-col mdl-cell--3-offset mdl-card mdl-card--3dp walker-list-item"  style="min-height: 48px">
+				<div class="mdl-cell mdl-cell--8-col mdl-cell--2-offset mdl-card mdl-card--3dp walker-list-item"  style="min-height: 48px">
 					<div class="mdl-card__title mdl-color--teal-300">
 					<%= w.fname %> | <%= w.role %><% if !w.active %> | (inactive) <% end -%>
 					</div>
@@ -36,8 +36,8 @@
 						<% if current_user %>
 							<div class="mdl-card__actions mdl-card--border">
 								<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/walkers/<%= w.id %>/edit">Edit</a>
-								<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href=<!-- deactivate walker -->Deactivate</a>
-								<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" method="DELETE" action="/walkers/<%= w.id %>">Delete</a>
+								<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect deactivate-button" data-remote="true" href="walkers/deactivate/<%= w.id %>" style="display: <% if w.active %><%= 'inline-flex' %><% else %><%= 'none' %><% end -%>">Deactivate</a>
+								<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect activate-button" data-remote="true" href="walkers/activate/<%= w.id %>" style="display: <% if !w.active %><%= 'inline-flex' %><% else %><%= 'none' %><% end -%>">Activate</a>
 							</div>
 						<% end %>
 					</div>
@@ -65,16 +65,38 @@
 -->
 
 <script>
+// Reveal walker cards on click
 	$(".walker-list-item").each(function(i) {
-		$(".walker-list-item").eq(i).on("click", function () {
-console.log("clicked");
-console.log($(".walker-list-body").eq(i)[0].style.display);
+		$(this).on("click", function () {
 			if ($(".walker-list-body").eq(i)[0].style.display === "none")	{
 				for (var j = 0; j < $(".walker-list-body").length; j++) {
 					$(".walker-list-body").eq(j).slideUp("slow");
 				}
 				$(".walker-list-body").eq(i).slideDown("slow");
 			}
+		});
+	});
+
+// Reveal all walkers
+	$(".show-all-button").on("click", function() {
+		$(".walker-list-body").each(function() {
+			$(this).slideDown();
+		});
+	});
+
+// Deactivate walker
+	$(".deactivate-button").each(function() {
+		$(this).on("ajax:complete", function(event) {
+			$(event.target).hide();
+			$(event.target).next().show();
+		});
+	});
+
+// Activate walker
+	$(".activate-button").each(function() {
+		$(this).on("ajax:complete", function(event) {
+			$(event.target).hide();
+			$(event.target).prev().show();
 		});
 	});
 </script>
