@@ -4,7 +4,7 @@ class WalkersController < ApplicationController
 		@walkers = Walker.all
 	    @contents = Content.where("page like ?", "%about%")
 	end
-	
+
 	def show
     	@walkers = Walker.where(active: true)
 	end
@@ -31,21 +31,21 @@ class WalkersController < ApplicationController
 		redirect_to "/walkers"
 	end
 
-	def update
-		if !current_user
-			redirect_to "/walkers"
-		end
-		walker = Walker.find(params[:id])
-		walker.update(walker_params)
-		walker.save
-		redirect_to "/walkers"
-	end
+ 	def update
+ 		if !current_user
+ 			redirect_to "/walkers"
+ 		end
+ 		walker = Walker.find(params[:id])
+ 		walker.update(walker_params)
+ 		walker.save
+ 		redirect_to admin_path
+ 	end
 
 	def destroy
 		@walker = Walker.find(params[:id])
-		if current_user
+		if current_user.admin
 			@walker.destroy
-			redirect_to '/admin'
+			redirect_to admin_path
 		else
 			# error handling if the user doesn't destroy
 		end

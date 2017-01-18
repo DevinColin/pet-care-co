@@ -10,13 +10,21 @@
       <%= w.short_bio %>
     </div>
     <div class="mdl-card__actions mdl-card--border">
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Edit </a>
+      <%= link_to "Edit", edit_walker_path(w.id), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
       <% if w.active %>
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Deactivate </a>
+        <%= form_for :walker, url: "/walkers/#{w.id}", method: "put" do |f| %>
+          <%= f.hidden_field :active, value: false  %>
+          <%= f.submit "Deactivate", class: "mdl-button mdl-button--colored" %>
+        <% end %>
       <% else %>
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Activate </a>
+      <%= form_for :walker, url: "/walkers/#{w.id}", method: "put" do |f| %>
+        <%= f.hidden_field :active, value: true  %>
+        <%= f.submit "Activate", class: "mdl-button mdl-button--colored" %>
       <% end %>
-      <div id='delete-walker-<%= w.id %>' class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Delete Walker</div>
+      <% end %>
+      <% if current_user.admin %>
+        <div id='delete-walker-<%= w.id %>' class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Delete Walker</div>
+      <% end %>
     </div>
   </div>
 
