@@ -8,17 +8,49 @@
       <%= s.highlights%>
     </div>
     <div class="mdl-card__actions ">
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Edit </a>
+      <%= link_to "Edit", edit_service_path(s.id), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
         <!-- ERB if else that handles active  -->
         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Deactivate</a>
         <!-- versus inactive services  -->
         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Activate</a>
         <!-- erb end -->
-      <a id="delete-service-<%= s.id %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Delete Service</a>
+      <% if current_user.admin %>
+        <a id="delete-service-<%= s.id %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Delete Service</a>
+      <% end %>
     </div>
   </div>
 
-<dialog>
-</dialog>
+  <dialog id="select-service-<%= s.id %>" class="mdl-dialog">
+    <h4 class="font-color-warning mdl-dialog__title">Delete this service</h4>
+    <hr>
+    <div class="mdl-dialog__content">
+      <p>This action cannot be undone. You can also disable the walker by clicking "Deactivate"</p>
+    </div>
+    <hr>
+    <div class="mdl-dialog__actions">
+      <button type="button" class="mdl-button close">Nevermind</button>
+      <%= button_to "Delete", "/services/#{s.id}", action: "delete", id: s.id, method: "delete", class: "font-color-warning mdl-button"%>
+    </div>
+  </dialog>
+
+  <script type="text/javascript">
+    var dialogCreation = function(){
+      var dialog = document.querySelector('#select-service-<%= s.id %>');
+          var showDialogButton = document.querySelector('#delete-service-<%= s.id %>');
+          if (! dialog.showModal) {
+            dialogPolyfill.registerDialog(dialog);
+          }
+          showDialogButton.addEventListener('click', function() {
+            dialog.showModal();
+          });
+          dialog.querySelector('.close').addEventListener('click', function() {
+            dialog.close();
+          });
+    }
+
+    dialogCreation();
+
+  </script>
+
 
 <% end %>

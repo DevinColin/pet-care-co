@@ -8,7 +8,7 @@ class ServicesController < ApplicationController
 	    @contents = Content.where("page like ?", "%seRVice%")
 	end
 	def show
-		@service = Service.find(params[:id])		
+		@service = Service.find(params[:id])
 	end
 	def new
 		if !current_user
@@ -27,7 +27,7 @@ class ServicesController < ApplicationController
 		if !current_user
 			redirect_to "/services"
 		end
-		@service = Service.find(params[:id])		
+		@service = Service.find(params[:id])
 	end
 	def update
 		if !current_user
@@ -37,11 +37,13 @@ class ServicesController < ApplicationController
 		service.update(service_params)
 		redirect_to "/services"
 	end
+
 	def destroy
-		@service = Service.find(params[:id])	
+		@service = Service.find(params[:id])
 		if current_user.admin
 			# Throw confirm/warning: are you sure?
 			@service.destroy
+			redirect_to '/admin'
 		else
 			# Throw error: not allowed to delete
 		end
