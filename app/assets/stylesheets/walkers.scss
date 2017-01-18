@@ -2,7 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/*.walker-list-body	{
+.walker-list-body	{
 	display: none;
-
-}*/
+	.walker-pic	{
+		height: 200px;
+		width: 200px;
+		float: left;
+		margin-right: 12px;
+	}
+}
