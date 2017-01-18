@@ -12,7 +12,7 @@
     <div class="mdl-card__actions mdl-card--border">
       <%= link_to "Edit", edit_walker_path(w.id), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
       <% if w.active %>
-        <%= form_for :walker, url: "/walkers/#{w.id}", method: "put" do |f| %>
+        <%= form_for :walker, url: walker_path(w.id), method: "put" do |f| %>
           <%= f.hidden_field :active, value: false  %>
           <%= f.submit "Deactivate", class: "mdl-button mdl-button--colored" %>
         <% end %>
