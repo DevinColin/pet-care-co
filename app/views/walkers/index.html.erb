@@ -25,6 +25,9 @@
 				<div class="mdl-cell mdl-cell--8-col mdl-cell--2-offset mdl-card mdl-card--3dp walker-list-item"  style="min-height: 48px">
 					<div class="mdl-card__title mdl-color--teal-300">
 						<%= w.fname %> | <%= w.role %><% if !w.active %> | (inactive) <% end -%>
+						<div class="click-open-icon" style="display: block">
+							<%= evil_icon 'ei-chevron-down', size: :m %>
+						</div>
 					</div>
 					<div class="walker-list-body" style="display: none">
 						<div class="mdl-card__supporting-text mdl-card--border mdl-color-text--grey-600" >
@@ -56,8 +59,10 @@
 			if ($(".walker-list-body").eq(i)[0].style.display === "none")	{
 				for (var j = 0; j < $(".walker-list-body").length; j++) {
 					$(".walker-list-body").eq(j).slideUp("slow");
+					$(".click-open-icon").eq(j)[0].style.display = "block";
 				}
 				$(".walker-list-body").eq(i).slideDown("slow");
+				$(".click-open-icon").eq(i)[0].style.display = "none";
 			}
 		});
 	});
@@ -66,6 +71,9 @@
 	$(".show-all-button").on("click", function() {
 		$(".walker-list-body").each(function() {
 			$(this).slideDown();
+		});
+		$(".click-open-icon").each(function() {
+			$(this)[0].style.display = "none";
 		});
 	});
 
