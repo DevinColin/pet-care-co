@@ -1,21 +1,53 @@
-<br>
-<br>\
-<br>
-<br>
-OMG home!
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="mdl-card mdl-cell mdl-cell--12-col">
 
-I'm proof that the MDL Gem loaded and was connected properly. If the ripple effect fires I work. <br>
+      <div class="content-card__background mdl-card mdl-cell mdl-cell--12-col">
+        <% @contents.each do |content| %>
+          <div class="content-card__title  mdl-card__title-text">
+            <h3 class="content-card__title-text"><%= content.heading %></h3>
+          </div>
+          <div class="mdl-card__supporting-text">
+            <%= content.text %>
+          </div>
+        <% end %>
+      </div>
 
-<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-  <i class="material-icons">add</i>
-</button>
+      <div class="content-card__background mdl-card mdl-cell mdl-cell--12-col">
+        <div class="content-card__title mdl-card__title-text">
+          <h3 class="content-card__title-text">Schedule a meet and greet today</h3>
+        </div>
+        <div class="mdl-card__supporting-text">
+          <div class="icon icon-ic_play-circle_outline_black_24dp"></div>
+          <p>
+            PAY US with MONEY! We accept mastercard, discover and awesome cool money too. Here is how our service works tho so that's cool.
+          </p>
+          <div class="content-card__icon-flags">
+              <%= evil_icon 'ei-credit-card', size: :m, id: "payments-tt" %>
+          </div>
+        </div>
+        <div class="mdl-card__actions">
+          <%= link_to "Schedule a visit!", contact_path, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+          <%= link_to "Meet our caregivers", about_path, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+          <%= link_to "See Testimonials", testimonials_path, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+        </div>
+      </div>
 
-<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
-  <i class="material-icons">add</i>
-</button>
+    </div>
+  </div>
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="mdl-card mdl-cell mdl-cell--12-col">
 
-<h2>Hopefully landing page content shows below here</h2>
-<% @contents.each do |content| %>
-  <%= content.heading %>
-  <%= content.text %><br><br>
-<% end %>
+      <div class="mdl-card mdl-cell mdl-cell--12-col">
+          <div class="content-card__title mdl-card__title-text mdl-color--teal-300">
+            <h3 class="content-card__title-text">Check out our service area</h3>
+          </div>
+          <div class="mdl-card__media">
+            <section id="map">
+              <iframe src="https://mapsengine.google.com/map/embed?mid=zn_KDfng5RdI.kz2ryF0A_4lA" width="100%" height="400px"></iframe>
+            </section>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

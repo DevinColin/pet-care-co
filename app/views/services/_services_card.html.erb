@@ -1,0 +1,51 @@
+<div class="mdl-card mdl-cell mdl-cell--12-col">
+	<div class="services-card-photo mdl-card__title mdl-color--teal-300">
+		<%= content_tag :div, class: "services-card-title-text" do %>
+			<%= content_tag :h2, service.name, class: "mdl-card__title-text"%>
+			<%= content_tag :span, service.highlights, class: "show-white-space mdl-card__subtitle-text" %>
+		<% end %>
+	</div>
+
+	<div class="mdl-card__actions">
+		<%= link_to "Learn More", '#', id: "service-#{service.id}", class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+		<% if current_user %>
+			<%= link_to "Edit this service", edit_service_path(service), class: "font-color-edit mdl-button mdl-js-button mdl-js-ripple-effect"%>
+		<% end %>
+	</div>
+</div>
+
+<dialog id="select-service-<%= service.id %>" class="wide-dialog mdl-dialog">
+  <h4 class="font-color-welcome mdl-dialog__title"><%= service.name %></h4>
+  <hr>
+  <div class="flex flex-row mdl-dialog__content">
+		<div class="service-card__content-section-small">
+			<div class="service-card__highlight-dialog show-white-space"><%= service.highlights %></div>
+		</div>
+		<div class="service-card__content-section-large">
+			<p class="font-color-welcome"><%= service.description %></p>
+		</div>
+  </div>
+  <hr>
+  <div class="mdl-dialog__actions">
+    <button type="button" class="mdl-button close">Close</button>
+  </div>
+</dialog>
+
+<script type="text/javascript">
+var dialogCreation = function(){
+    var dialog = document.querySelector('#select-service-<%= service.id %>');
+        var showDialogButton = document.querySelector('#service-<%= service.id %>');
+        if (! dialog.showModal) {
+          dialogPolyfill.registerDialog(dialog);
+        }
+        showDialogButton.addEventListener('click', function() {
+          dialog.showModal();
+        });
+        dialog.querySelector('.close').addEventListener('click', function() {
+          dialog.close();
+        });
+  }
+
+  dialogCreation();
+
+  </script>

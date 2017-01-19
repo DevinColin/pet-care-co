@@ -1,7 +1,47 @@
-I'm contact <br>  <br>
-
-
-<% @contents.each do |content| %>
-  <%= content.heading %>
-  <%= content.text %>
-<% end %>
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="mdl-card mdl-cell mdl-cell--12-col">
+      <div class="contact-card__background mdl-card mdl-cell mdl-cell--12-col">
+        <form action="#">
+          <div class="contact-card__input-area mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="name">
+            <label class="mdl-textfield__label" for="sample3">Name</label>
+          </div>
+          <div class="contact-card__input-area mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="email">
+            <label class="mdl-textfield__label" for="sample3">Email</label>
+          </div>
+          <div class="contact-card__input-area mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="address">
+            <label class="mdl-textfield__label" for="sample3">Address</label>
+          </div>
+          <div class="contact-card__input-area mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="phone">
+            <label class="mdl-textfield__label" for="sample3">Phone</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="zip">
+            <label class="mdl-textfield__label" for="sample3">Zipcode</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="start-date">
+            <label class="mdl-textfield__label" for="sample3">Start Date</label>
+          </div>
+          <div class="contact-card__input-area mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <textarea class="mdl-textfield__input" type="text" rows= "4" id="about-pet" ></textarea>
+            <label class="mdl-textfield__label" for="sample5">About your pet</label>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="mdl-card mdl-cell mdl-cell--12-col">
+      Hours content would go here
+      <% @contents.each do |content| %>
+      <%= content.heading %>
+      <%= content.text %>
+      <% end %>
+    </div>
+  </div>
+</div>

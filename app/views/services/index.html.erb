@@ -1,16 +1,38 @@
-I'm services controller and services
 <% if current_user %>
-	<%= link_to "Add new service", new_service_path %><br><br>
+	<div class="mdl-grid">
+		<div class="mdl-cell mdl-cell--6-col">
+			<%= link_to "Create a new service", new_service_path %>
+		</div>
+		<div class="mdl-cell mdl-cell--6-col">
+			Some content here maybe?
+		</div>
+	</div>
+	<hr>
 <% end %>
 
-<% @services.each do |service| %>
-  Service Name:  ------<%= content_tag :p, service.name %><br><br>
-  Service Highlights:  ------<%= content_tag :div, service.highlights.html_safe %><br><br>
-  Service Descrtipion:  ------<%= content_tag :p, service.description.html_safe %><br><br>
-  <% if current_user %>
-  	<%= link_to "Edit", edit_service_path(service) %><br><br>
-  <% end %>
-<% end %>
+<div class="mdl-grid">
+
+	<% @services.each do |service| %>
+		<% if (service.id % 4) == 0 %>
+			<div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-tablet mdl-cell--12-phone">
+				<%= render 'services/services_card', :service => service %>
+			</div>
+		<% elsif service.id % 3 ==  0%>
+			<div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-tablet mdl-cell--12-phone">
+				<%= render 'services/services_card', :service => service %>
+			</div>
+		<% elsif service.id % 2 ==  0%>
+			<div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-tablet mdl-cell--12-phone">
+				<%= render 'services/services_card', :service => service %>
+			</div>
+		<% else %>
+			<div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-tablet mdl-cell--12-phone">
+				<%= render 'services/services_card', :service => service %>
+			</div>
+		<% end %>
+	<% end %>
+
+</div>
 
 <br><br><br><br>
 
