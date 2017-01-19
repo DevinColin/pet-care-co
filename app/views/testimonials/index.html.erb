@@ -10,8 +10,8 @@
 				<%= t.cust_name %><% if !t.visible %> | (not shown on page) <% end -%>
 			</div>
 			<div class="mdl-card__supporting-text mdl-color-text--grey-600">
+				<div class="testim-stars mdl"><% t.stars.times do %> *<% end -%></div>
 				<div class="testim-cust-desc"><%= t.cust_desc %></div>
-				<div class="testim-stars"><% t.stars.times do %> *<% end -%></div>
 				<div class="testim-content"><%= t.content.html_safe %></div>
 				<% if current_user %>
 					<div class="mdl-card__actions">

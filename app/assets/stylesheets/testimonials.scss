@@ -9,10 +9,19 @@
 	min-height: 300px;
 
 	.testim-stars	{
-		/*float: right;*/
+		float: right;
 		font-weight: bolder;
 		color: gold;
-		font-size: 24px;
+		font-size: 36px;
+		text-shadow: 2px 2px 2px #aaaaaa;
+		padding-top: 8px;
+		padding-left: 24px;
+	}
+
+	.testim-cust-desc	{
+		font-weight: bold;
+		font-size: 16px;
+		padding-bottom: 8px;
 	}
 }
 
