@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2>Hi Sarah</h2>
+    <p><%= @prospect['name'] %> sent you an contact request email.</p>
+    <ul>
+      <li>Name: <%= @prospect['name'] %></li>
+      <li>Email: <%= @prospect['email'] %></li>
+      <li>Address: <%= @prospect['address'] %></li>
+      <li>Phone: <%= @prospect['phone'] %></li>
+      <li>Zip: <%= @prospect['zip'] %></li>
+      <li>Date: <%= @prospect['start_date'] %></li>
+    </ul>
+    <h3>About Pet</h3>
+    <p>
+      <%= @prospect['about_pet'] %>
+    </p>
+    <p>Thanks for requesting info and have a great day!</p>
+  </body>
+</html>

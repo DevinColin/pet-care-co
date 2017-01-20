@@ -23,4 +23,20 @@ class StaticPagesController < ApplicationController
     @testimonials = Testimonial.order(visible: :desc)
   end
 
+  def contact_email
+    @prospect = {}
+    @prospect["name"]= params[:name]
+    @prospect["email"] = params[:email]
+    @prospect["zip"] = params[:zip]
+    @prospect["phone"] = params[:phone]
+    @prospect["address"] = params[:address]
+    @prospect["start_date"] = params[:start_date]
+    @prospect["about_pet"] = params[:about_pet]
+    puts @prospect
+    UserNotifierMailer.send_contact_reply_email(@prospect).deliver
+    UserNotifierMailer.send_contact_email_to_owner(@prospect).deliver
+
+    redirect_to contact_path
+  end
+
 end
