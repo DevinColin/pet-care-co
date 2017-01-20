@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   # Use in development only, switch to PostGreS for production (see below)
-  gem 'sqlite3'
+  gem 'pg', '0.18.4'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
@@ -63,3 +63,5 @@ gem 'material_design_lite-rails', '~> 1.3'
 gem 'ckeditor'
 gem 'evil_icons'
 gem 'sendgrid'
+
+ruby '2.3.3'
