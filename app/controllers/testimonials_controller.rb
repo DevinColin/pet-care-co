@@ -2,7 +2,11 @@ class TestimonialsController < ApplicationController
 
 	def index
     	@testims = Testimonial.where(visible: true)
-	    @contents = Content.where("page like ?", "%testIMOnial%")
+    	if current_user
+	    	@contents = Content.where("page like ?", "%testIMOnial%")
+    	else
+	    	@contents = Content.where("page like ?", "%testIMOnial%").reject { |c| !c.visible }[0..2]
+    	end
 	end
 
 	def show

@@ -2,7 +2,11 @@ class WalkersController < ApplicationController
 
 	def index
 		@walkers = Walker.all
-	    @contents = Content.where("page like ?", "%about%")
+		if current_user
+	    	@contents = Content.where("page like ?", "%about%")
+		else
+	    	@contents = Content.where("page like ?", "%about%").reject { |c| !c.visible }[0..2]
+		end
 	end
 
 	def show
@@ -16,19 +20,19 @@ class WalkersController < ApplicationController
 		@walker = Walker.new
 	end
 
-	def edit
-		if !current_user
-			redirect_to "/walkers"
-		end
-		@walker = Walker.find(params[:id])
-	end
-
 	def create
 		if !current_user
 			redirect_to "/walkers"
 		end
 		@walker = Walker.create(walker_params)
 		redirect_to "/walkers"
+	end
+
+	def edit
+		if !current_user
+			redirect_to "/walkers"
+		end
+		@walker = Walker.find(params[:id])
 	end
 
  	def update
