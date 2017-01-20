@@ -13,23 +13,6 @@ class ContentsController < ApplicationController
 		@content = Content.new
 	end
 	def create
-puts "++++++++++++++++++++++++++++++++++"
-puts params[:page]
-puts page_names.find_index(params[:page])
-params.each do |k, v|
-	print k
-	print ", "
-	puts v
-end
-puts "++++++++++++++++++++++++++++++++++"
-puts "now the strong params"
-puts "++++++++++++++++++++++++++++++++++"
-content_params.each do |k, v|
-	print k
-	print ", "
-	puts v
-end
-puts "++++++++++++++++++++++++++++++++++"
 		path = page_paths[page_names.find_index(content_params[:page])]
 		if !current_user
 			redirect_to "/"
@@ -45,6 +28,14 @@ puts "++++++++++++++++++++++++++++++++++"
 		@content = Content.find(params[:id])
 		@content.update(content_params)
 		redirect_to "#{@content.path}"
+	end
+	def invisible
+		content = Content.find(params[:id])
+		content.update(visible: false)
+	end
+	def visible
+		content = Content.find(params[:id])
+		content.update(visible: true)
 	end
 	def destroy
 
