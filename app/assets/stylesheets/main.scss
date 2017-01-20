@@ -3,5 +3,9 @@
 }
 
 .site-coloring {
-  background-color: $background-color-main;
+  // background-color: $background-color-main;
+}
+
+.walker-image {
+  background: asset-data-url("walk.jpg") no-repeat center / cover fixed;
 }
