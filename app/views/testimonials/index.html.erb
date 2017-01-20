@@ -3,6 +3,34 @@
 		<a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="/testimonials/new">Create new testimonial</a>
 	<% end %>
 </div>
+
+<div id="content-list">
+	<% @contents.each do |c| %>
+		<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--8-col mdl-card mdl-shadow--3dp">
+				<div class="mdl-card__title mdl-color--yellow-300">
+	  				<%= c.heading %><% if !c.visible %><%= " | (not displayed)" %><% end -%>
+				</div>
+				<div class="mdl-card__supporting-text mdl-color-text--grey-600">
+	  				<%= c.text.html_safe %>
+				</div>
+				<% if current_user %>
+					<div class="mdl-card__actions mdl-card--border">
+						<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/contents/<%= c.id %>/edit">Edit</a>
+						<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect deactivate-button" data-remote="true" href="/contents/invisible/<%= c.id %>" style="display: <% if c.visible %><%= 'inline-flex' %><% else %><%= 'none' %><% end -%>">Do not display</a>
+						<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect activate-button" data-remote="true" href="/contents/visible/<%= c.id %>" style="display: <% if !c.visible %><%= 'inline-flex' %><% else %><%= 'none' %><% end -%>">Display</a>
+					</div>
+				<% end -%>
+			</div>
+			<% if c.avatar_file_name && c.visible %>
+				<div class="image-container mdl-cell mdl-cell--4-col">
+					<div class="image-frame mdl-shadow--3dp" style="background-image: url(<%= c.avatar.url %>);"></div>
+				</div>
+			<% end -%>
+		</div>
+	<% end %>
+</div>
+
 <% @testims.each_with_index do |t, i| %>
 	<% if t.visible || current_user %>
 		<div class="mdl-grid">
@@ -49,7 +77,19 @@
 		});
 	});
 
-	$(".image-container").each(function(i) {
-console.log(i);
+// Deactivate content
+	$(".deactivate-button").each(function() {
+		$(this).on("ajax:complete", function(event) {
+			$(event.target).hide();
+			$(event.target).next().show();
+		});
 	});
+
+// Activate content
+	$(".activate-button").each(function() {
+		$(this).on("ajax:complete", function(event) {
+			$(event.target).hide();
+			$(event.target).prev().show();
+		});
+	});	
 </script>	

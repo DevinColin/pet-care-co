@@ -1,14 +1,8 @@
-<% if current_user %>
-	<div class="mdl-grid">
-		<div class="mdl-cell mdl-cell--6-col">
-			<%= link_to "Create a new service", new_service_path %>
-		</div>
-		<div class="mdl-cell mdl-cell--6-col">
-			Some content here maybe?
-		</div>
-	</div>
-	<hr>
-<% end %>
+<div class="mdl-grid">
+	<% if current_user %>
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="/services/new">Create new service</a>
+	<% end %>
+</div>
 
 <div class="mdl-grid">
 
@@ -41,13 +35,18 @@
 	  				<%= c.heading %><% if !c.visible %><%= " | (not displayed)" %><% end -%>
 				</div>
 				<div class="mdl-card__supporting-text mdl-color-text--grey-600">
+					<% if c.avatar_file_name %>
+						<div class="content-pic">
+							<%= image_tag c.avatar, size: 200 %>
+						</div>
+					<% end -%>
 	  				<%= c.text.html_safe %>
 				</div>
 				<% if current_user %>
 					<div class="mdl-card__actions mdl-card--border">
 						<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/contents/<%= c.id %>/edit">Edit</a>
-						<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect deactivate-button" data-remote="true" href="/content/invisible/<%= c.id %>" style="display: <% if c.visible %><%= 'inline-flex' %><% else %><%= 'none' %><% end -%>">Do not display</a>
-						<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect activate-button" data-remote="true" href="/content/visible/<%= c.id %>" style="display: <% if !c.visible %><%= 'inline-flex' %><% else %><%= 'none' %><% end -%>">Display</a>
+						<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect deactivate-button" data-remote="true" href="/contents/invisible/<%= c.id %>" style="display: <% if c.visible %><%= 'inline-flex' %><% else %><%= 'none' %><% end -%>">Do not display</a>
+						<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect activate-button" data-remote="true" href="/contents/visible/<%= c.id %>" style="display: <% if !c.visible %><%= 'inline-flex' %><% else %><%= 'none' %><% end -%>">Display</a>
 					</div>
 				<% end -%>
 			</div>
@@ -56,7 +55,7 @@
 </div>
 
 <script>
-// Deactivate walker
+// Deactivate content
 	$(".deactivate-button").each(function() {
 		$(this).on("ajax:complete", function(event) {
 			$(event.target).hide();
@@ -64,7 +63,7 @@
 		});
 	});
 
-// Activate walker
+// Activate content
 	$(".activate-button").each(function() {
 		$(this).on("ajax:complete", function(event) {
 			$(event.target).hide();

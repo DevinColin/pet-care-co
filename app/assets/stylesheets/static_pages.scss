@@ -1,6 +1,14 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.content-pic	{
+	height: 300px;
+	width: 300px;
+	float: right;
+	margin-right: 12px;
+}
+
 .contact-card__background {
   padding: 5px;
   background-color: orange;
