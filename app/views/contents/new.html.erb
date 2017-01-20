@@ -1,3 +1,17 @@
-OMGGGMO
+<h2>Add new page content</h2>
 
-I'm new
+<%= form_for @content, url: {action: "create", controller: "contents"} do |f| %>
+	<%= f.label "Page: " %>
+	<%= f.select :page, page_names %><br>
+	<%= f.label "Headline: " %>
+	<%= f.text_field :heading %>
+	<%= f.label "Text: " %>
+	<%= f.text_area :text, id: "content-text" %>
+	<%= f.label "Show on page? " %>
+	<%= f.check_box :visible, checked: true %>
+	<%= f.submit %>
+<% end -%>
+
+<script>
+	CKEDITOR.replace("content-text", {toolbar: "UserToolbar"});
+</script>

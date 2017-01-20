@@ -8,16 +8,21 @@
 	</div>
 </div>
 
-<div class="mdl-grid">
-	<div class="mdl-cell mdl-cell--8-col mdl-cell--2-offset mdl-card mdl-shadow--3dp">
-		<div class="mdl-card__title mdl-color--yellow-300">
-			<%= @contents[0].heading %>
+<div id="content-list">
+	<% @contents.each do |c| %>
+		<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--8-col mdl-cell--2-offset mdl-card mdl-shadow--3dp">
+				<div class="mdl-card__title mdl-color--yellow-300">
+					<%= c.heading %><% if !c.visible %><%= " | (not displayed)" %><% end %>
+				</div>
+				<div class="mdl-card__supporting-text mdl-color-text--grey-600">
+					<%= c.text.html_safe %>
+				</div>
+			</div>
 		</div>
-		<div class="mdl-card__supporting-text mdl-color-text--grey-600">
-			<%= @contents[0].text %>
-		</div>
-	</div>
+	<% end -%>
 </div>
+
 <div id="walker-list">
 	<% @walkers.each do |w| %>
 		<% if w.active || current_user %>
