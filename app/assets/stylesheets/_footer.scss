@@ -6,4 +6,8 @@ _.footer-content {
 .footer-less-padding	{
 	padding-top: 8px;
 	padding-bottom: 8px;
+
+	.icon 	{
+		margin-top: -8px;
+	}
 }
