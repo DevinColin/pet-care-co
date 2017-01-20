@@ -46,8 +46,8 @@
 				<% if current_user %>
 					<div class="mdl-card__actions mdl-card--border">
 						<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/contents/<%= c.id %>/edit">Edit</a>
-						<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect deactivate-button" data-remote="true" href="/content/invisible/<%= c.id %>" style="display: <% if c.visible %><%= 'inline-flex' %><% else %><%= 'none' %><% end -%>">Do not display</a>
-						<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect activate-button" data-remote="true" href="/content/visible/<%= c.id %>" style="display: <% if !c.visible %><%= 'inline-flex' %><% else %><%= 'none' %><% end -%>">Display</a>
+						<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect deactivate-button" data-remote="true" href="/contents/invisible/<%= c.id %>" style="display: <% if c.visible %><%= 'inline-flex' %><% else %><%= 'none' %><% end -%>">Do not display</a>
+						<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect activate-button" data-remote="true" href="/contents/visible/<%= c.id %>" style="display: <% if !c.visible %><%= 'inline-flex' %><% else %><%= 'none' %><% end -%>">Display</a>
 					</div>
 				<% end -%>
 			</div>
