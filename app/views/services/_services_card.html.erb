@@ -2,7 +2,7 @@
 	<div class="services-card-photo mdl-card__title mdl-color--teal-300">
 		<%= content_tag :div, class: "services-card-title-text" do %>
 			<%= content_tag :h2, service.name, class: "mdl-card__title-text"%>
-			<%= content_tag :span, service.highlights, class: "show-white-space mdl-card__subtitle-text" %>
+			<%= content_tag :span, service.highlights.html_safe, class: "mdl-card__subtitle-text" %>
 		<% end %>
 	</div>
 

@@ -1,11 +1,8 @@
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title">
-        Philadelphia Pet Care Company
-      </span>
+      <%= link_to "Philadelphia Pet Care Company", root_path, class: "mdl-layout-title mdl-navigation__link" %><br>
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation">
-        <%= link_to "Home", root_path, class: "mdl-navigation__link" %><br>
         <%= link_to "About", about_path, class: "mdl-navigation__link" %><br>
         <%= link_to "Services", services_path, class: "mdl-navigation__link" %><br>
         <%= link_to "Testimonials", testimonials_path, class: "mdl-navigation__link" %><br>

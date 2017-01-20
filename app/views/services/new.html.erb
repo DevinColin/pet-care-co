@@ -3,7 +3,7 @@
 <%= form_for @service, url: {action: "create", controller: "services"} do |f| %>
 	<%= f.label "Service name: " %>
 	<%= f.text_field :name, autofocus: true %><br>
-	<%= f.label "Highlights (prices, hours, etc.): " %>
+	<label>Highlights (prices, hours, etc.): </label>
 	<%= f.text_area :highlights, id: "highlight-text" %><br>
 	<%= f.label "Description: " %>
 	<%= f.text_area :description, id: "desc-text" %><br>
@@ -13,6 +13,6 @@
 <% end -%>
 
 <script>
-	CKEDITOR.replace("highlight-text");
-	CKEDITOR.replace("desc-text");
+	CKEDITOR.replace("highlight-text", {toolbar: 'UserToolbar'});
+	CKEDITOR.replace("desc-text", {toolbar: 'UserToolbar'});
 </script>
