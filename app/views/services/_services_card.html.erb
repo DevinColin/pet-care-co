@@ -19,10 +19,10 @@
   <hr>
   <div class="flex flex-row mdl-dialog__content">
 		<div class="service-card__content-section-small">
-			<div class="service-card__highlight-dialog show-white-space"><%= service.highlights %></div>
+			<div class="service-card__highlight-dialog"><%= service.highlights.html_safe %></div>
 		</div>
 		<div class="service-card__content-section-large">
-			<p class="font-color-welcome"><%= service.description %></p>
+			<p class="font-color-welcome"><%= service.description.html_safe %></p>
 		</div>
   </div>
   <hr>
