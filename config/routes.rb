@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'testimonials/invisible/:id', to: 'testimonials#invisible', as: 'invisible'
   get 'testimonials/visible/:id',   to: 'testimonials#visible',   as: 'visible'
 
+  post '/contact_email',            to: 'static_pages#contact_email'
   # This code is suggested by devise when generating user controllers:
     #   Rails.application.routes.draw do
     #   devise_for :users, controllers: {

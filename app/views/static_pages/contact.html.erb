@@ -45,3 +45,12 @@
     </div>
   </div>
 </div>
+
+<%= form_tag 'contact_email', url:{ action: "contact_email" } do |f|  %>
+  <%= text_field_tag :name %>
+  <%= text_field_tag :email %>
+  <%= text_field_tag :zip %>
+  <!-- <input type="text" name="prospect[email]">
+  <input type="text" name="prospect[zip]"> -->
+  <%= submit_tag "submit" %>
+<% end %>
