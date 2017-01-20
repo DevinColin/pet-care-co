@@ -2,36 +2,37 @@
   <div class="mdl-cell mdl-cell--6-col">
     <div class="mdl-card mdl-cell mdl-cell--12-col">
       <div class="contact-card__background mdl-card mdl-cell mdl-cell--12-col">
-        <form action="#">
+        <%= form_tag 'contact_email', url:{ action: "contact_email" } do |f|  %>
           <div class="contact-card__input-area mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="name">
+            <%= text_field_tag :name, nil, class: "mdl-textfield__input", id: "name" %>
             <label class="mdl-textfield__label" for="sample3">Name</label>
           </div>
           <div class="contact-card__input-area mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="email">
+            <%= text_field_tag :email, nil, class: "mdl-textfield__input", id: "email" %>
             <label class="mdl-textfield__label" for="sample3">Email</label>
           </div>
           <div class="contact-card__input-area mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="address">
+            <%= text_field_tag :address, nil, class: "mdl-textfield__input", id: "address" %>
             <label class="mdl-textfield__label" for="sample3">Address</label>
           </div>
           <div class="contact-card__input-area mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="phone">
+            <%= text_field_tag :phone, nil, class: "mdl-textfield__input", id: "phone" %>
             <label class="mdl-textfield__label" for="sample3">Phone</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="zip">
+            <%= text_field_tag :zip, nil, class: "mdl-textfield__input", id: "zip" %>
             <label class="mdl-textfield__label" for="sample3">Zipcode</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="start-date">
+            <%= text_field_tag :start_date, nil, class: "mdl-textfield__input", id: "start_date" %>
             <label class="mdl-textfield__label" for="sample3">Start Date</label>
           </div>
           <div class="contact-card__input-area mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <textarea class="mdl-textfield__input" type="text" rows= "4" id="about-pet" ></textarea>
+            <%= text_field_tag :about_pet, nil, class: "mdl-textfield__input", id: "about_pet" %>
             <label class="mdl-textfield__label" for="sample5">About your pet</label>
           </div>
-        </form>
+          <%= submit_tag "submit" %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -45,12 +46,3 @@
     </div>
   </div>
 </div>
-
-<%= form_tag 'contact_email', url:{ action: "contact_email" } do |f|  %>
-  <%= text_field_tag :name %>
-  <%= text_field_tag :email %>
-  <%= text_field_tag :zip %>
-  <!-- <input type="text" name="prospect[email]">
-  <input type="text" name="prospect[zip]"> -->
-  <%= submit_tag "submit" %>
-<% end %>

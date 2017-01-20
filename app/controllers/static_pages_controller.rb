@@ -20,17 +20,15 @@ class StaticPagesController < ApplicationController
     @prospect["name"]= params[:name]
     @prospect["email"] = params[:email]
     @prospect["zip"] = params[:zip]
+    @prospect["phone"] = params[:phone]
+    @prospect["address"] = params[:address]
+    @prospect["start_date"] = params[:start_date]
+    @prospect["about_pet"] = params[:about_pet]
     puts @prospect
-    puts :name
-    puts :email
-    puts :zip
-    my_mailer = UserNotifierMailer.new
-    if @prospect["zip"]
-      my_mailer.send_contact_reply_email(@prospect)
-      redirect_to contact_path
-    # else
-      # redirect_to root_path
-    end
+    UserNotifierMailer.send_contact_reply_email(@prospect).deliver
+    UserNotifierMailer.send_contact_email_to_owner(@prospect).deliver
+
+    redirect_to contact_path
   end
 
 end
