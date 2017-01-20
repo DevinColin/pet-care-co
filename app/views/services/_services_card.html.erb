@@ -22,6 +22,11 @@
 			<div class="service-card__highlight-dialog"><%= service.highlights.html_safe %></div>
 		</div>
 		<div class="service-card__content-section-large">
+      <% if service.avatar_file_name %>
+        <div class="content-pic">
+          <%= image_tag service.avatar, size: 200 %>
+        </div>
+      <% end -%>
 			<p class="font-color-welcome"><%= service.description.html_safe %></p>
 		</div>
   </div>
