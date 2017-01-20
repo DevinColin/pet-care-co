@@ -3,5 +3,23 @@
 }
 
 .site-coloring {
-  background-color: $background-color-main;
+  // background-color: $background-color-main;
+}
+
+.walker-image {
+  background: asset-data-url("walk.jpg") no-repeat center / cover fixed;
+}
+
+.clear-card-background {
+  background-color: rgba(0,0,0,0.1);
+  div {
+    color: white;
+  }
+}
+
+.faded-card-background {
+  background-color: rgba(0,0,0,0.5);
+  div {
+    color: white;
+  }
 }
