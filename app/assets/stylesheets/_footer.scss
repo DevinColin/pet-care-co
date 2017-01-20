@@ -5,9 +5,13 @@ _.footer-content {
 
 .footer-less-padding	{
 	padding-top: 8px;
-	padding-bottom: 8px;
+	padding-bottom: 12px;
 
 	.icon 	{
 		margin-top: -8px;
+	}
+
+	#yelp-icon	{
+		padding-top: 2px;	
 	}
 }
