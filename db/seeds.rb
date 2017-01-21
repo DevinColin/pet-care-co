@@ -190,6 +190,6 @@
 
 u = User.new
 u.email = "colin@pet-care-co.com"
-u.encrypted_password = "password"
+u.password = "password"
 u.admin = true
 u.save!
