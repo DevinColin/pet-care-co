@@ -1,5 +1,5 @@
 <div class="mdl-grid">
-  <div class="mdl-cell mdl-cell--6-col">
+  <div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet">
     <div class="mdl-card mdl-cell mdl-cell--12-col">
       <div class="contact-card__background mdl-card mdl-cell mdl-cell--12-col">
         <%= form_tag 'contact_email', url:{ action: "contact_email" } do |f|  %>
@@ -36,11 +36,11 @@
       </div>
     </div>
   </div>
-  <div class="mdl-cell mdl-cell--6-col">
+  <div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet">
     <% @contents.each do |c| %>
       <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--3dp">
-          <div class="mdl-card__title mdl-color--yellow-300">
+          <div class="background-color-contact mdl-card__title">
             <%= c.heading %><% if !c.visible %><%= " | (not displayed)" %><% end -%>
           </div>
           <div class="mdl-card__supporting-text mdl-color-text--grey-600">

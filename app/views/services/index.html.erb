@@ -8,19 +8,19 @@
 
 	<% @services.each do |service| %>
 		<% if (service.id % 4) == 0 %>
-			<div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-tablet mdl-cell--12-phone">
+			<div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
 				<%= render 'services/services_card', :service => service %>
 			</div>
 		<% elsif service.id % 3 ==  0%>
-			<div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-tablet mdl-cell--12-phone">
+			<div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
 				<%= render 'services/services_card', :service => service %>
 			</div>
 		<% elsif service.id % 2 ==  0%>
-			<div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-tablet mdl-cell--12-phone">
+			<div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
 				<%= render 'services/services_card', :service => service %>
 			</div>
 		<% else %>
-			<div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-tablet mdl-cell--12-phone">
+			<div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
 				<%= render 'services/services_card', :service => service %>
 			</div>
 		<% end %>
