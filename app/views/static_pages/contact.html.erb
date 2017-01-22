@@ -31,19 +31,21 @@
             <%= text_field_tag :about_pet, nil, class: "mdl-textfield__input", id: "about_pet" %>
             <label class="mdl-textfield__label" for="sample5">About your pet</label>
           </div>
-          <%= submit_tag "submit" %>
+          <%= submit_tag "submit", class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
         <% end %>
       </div>
     </div>
   </div>
   <div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet">
+
     <% @contents.each do |c| %>
-      <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--3dp">
-          <div class="background-color-contact mdl-card__title">
+
+    <div class="clear-card-background mdl-card mdl-cell mdl-cell--12-col">
+      <div class="faded-card-background mdl-card mdl-cell mdl-cell--12-col">
+        <div class="content-cart__title mdl-card__title-text">
             <%= c.heading %><% if !c.visible %><%= " | (not displayed)" %><% end -%>
           </div>
-          <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+          <div class="contact-card__supporting-text mdl-card__supporting-text">
             <% if c.avatar_file_name %>
               <div class="content-pic">
                 <%= image_tag c.avatar, size: 200 %>
@@ -60,7 +62,9 @@
           <% end -%>
         </div>
       </div>
+
     <% end -%>
+
   </div>
 </div>
 
