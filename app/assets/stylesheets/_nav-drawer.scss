@@ -1,0 +1,64 @@
+.nav__graphic-box {
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  background: asset-data-url("resting.jpg") no-repeat center / cover;
+
+}
+
+.nav__title-font {
+  color: white;
+  font-weight: bolder;
+  font-weight: 500;;
+  font-size: 2.2em;
+  text-shadow: -1px 0 #424242, 0 1px #424242, 1px 0 #424242, 0 -1px #424242;
+}
+
+.nav__social-icons {
+  display: flex;
+  margin-right: 0;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  .fill-facebook {
+    transition: all .75s linear;
+    &:hover{
+      fill:#afbdd4;
+      transform: rotate(720deg);
+    }
+  }
+  .fill-instagram {
+    transition: all .75s linear;
+    &:hover{
+      fill:#8a3ab9;
+      transform: rotate(720deg);
+    }
+  }
+  .fill-twitter {
+    transition: all .75s linear;
+    &:hover{
+      fill:#292f33;
+      transform: rotate(720deg);
+    }
+  }
+  .fill-linkedin {
+    transition: all .75s linear;
+    &:hover{
+      fill:#313335;
+      transform: rotate(720deg);
+    }
+  }
+  .fill-yelp {
+    transition: transform .75s linear;
+    path {
+      transition: fill .75s linear;
+    }
+
+    &:hover{
+      transform: rotate(720deg);
+      path {
+        fill: #0073bb;
+      }
+    }
+  }
+}
