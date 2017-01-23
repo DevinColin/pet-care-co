@@ -63,4 +63,3 @@ gem 'material_design_lite-rails', '~> 1.3'
 gem 'ckeditor'
 gem 'evil_icons'
 gem 'sendgrid'
-
