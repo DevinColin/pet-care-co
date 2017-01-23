@@ -25,7 +25,7 @@
             <h3 class="content-card__title-text"><%= content.heading %></h3>
           </div>
           <div class="mdl-card__supporting-text">
-            <%= content.text %>
+            <%= content.text.html_safe %>
           </div>
         <% end %>
       </div>
