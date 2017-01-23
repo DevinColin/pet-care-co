@@ -52,7 +52,7 @@
 									<%= image_tag w.avatar, size: 200 %>
 								</div>
 							<% end -%>
-							<%= w.bio %>
+							<%= raw w.bio %>
 						</div>
 						<% if current_user %>
 							<div class="mdl-card__actions mdl-card--border">

@@ -69,7 +69,7 @@ class WalkersController < ApplicationController
 	private
 
 		def walker_params
-			params.require(:walker).permit(:id, :fname, :lname, :role, :active, :role, :avatar)
+			params.require(:walker).permit(:id, :fname, :lname, :bio, :active, :role, :avatar)
 		end
 
 end
