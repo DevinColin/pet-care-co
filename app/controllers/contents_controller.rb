@@ -17,8 +17,8 @@ class ContentsController < ApplicationController
 		if !current_user
 			redirect_to "/"
 		end
-		@content = Content.create(content_params)
 		@content.path = path
+		@content = Content.create(content_params)
 		redirect_to "#{@content.path}"
 	end
 	def edit

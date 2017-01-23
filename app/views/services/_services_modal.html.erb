@@ -1,0 +1,49 @@
+<dialog id="select-service-<%= service.id %>" class="wide-dialog mdl-dialog">
+  <h4 class="font-color-welcome mdl-dialog__title"><%= service.name %></h4>
+  <hr>
+  <div class="flex flex-row mdl-dialog__content">
+		<div class="service-card__content-section-small mdl-color--teal-50">
+			<div class="service-card__highlight-dialog"><%= service.highlights.html_safe %></div>
+		</div>
+		<div class="service-card__content-section-large">
+      <% if service.avatar_file_name %>
+        <div class="content-pic">
+          <%= image_tag service.avatar, size: 200 %>
+        </div>
+      <% end -%>
+			<p class="font-color-welcome"><%= service.description.html_safe %></p>
+		</div>
+  </div>
+  <hr>
+  <div class="mdl-dialog__actions">
+    <button type="button" id="close-<%= service.id %>" class="mdl-button close">Close</button>
+  </div>
+</dialog>
+
+<script type="text/javascript">
+var dialogCreation = function(){
+    var dialog = document.querySelector('#select-service-<%= service.id %>');
+        var showDialogButton = document.querySelector('#service-<%= service.id %>');
+        if (! dialog.showModal) {
+          dialogPolyfill.registerDialog(dialog);
+          if(dialog.showModal)  {
+console.log("dialogPolyfill worked, man");
+          }
+        }
+        showDialogButton.addEventListener('click', function() {
+          dialog.showModal();
+        });
+        var closeButton = document.querySelector('#close-<%= service.id %>');
+        closeButton.addEventListener('click', function() {
+console.log("this is the new function");
+          dialog.close();
+        });
+        dialog.querySelector('.close').addEventListener('click', function() {
+console.log("well, the button works");
+          dialog.close();
+        });
+  }
+
+  dialogCreation();
+
+  </script>
