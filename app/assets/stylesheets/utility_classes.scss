@@ -10,6 +10,22 @@
   color: $font-color-welcome;
 }
 
+.background-color-header {
+  background-color: $background-color-header;
+}
+
+.background-color-footer {
+  background-color: $background-color-footer;
+}
+
+.background-color-contact {
+  background-color: $background-color-contact;
+}
+
 .show-white-space {
+  white-space: pre-wrap;
+}
+
+.contact-card__supporting-text{
   white-space: pre-wrap;
 }
