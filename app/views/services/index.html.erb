@@ -11,21 +11,36 @@
 			<div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
 				<%= render 'services/services_card', :service => service %>
 			</div>
+			<div class="service-modal">
+				<%= render 'services/services_modal', service: service %>
+			</div>
 		<% elsif service.id % 3 ==  0%>
 			<div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
 				<%= render 'services/services_card', :service => service %>
+			</div>
+			<div class="service-modal">
+				<%= render 'services/services_modal', service: service %>
 			</div>
 		<% elsif service.id % 2 ==  0%>
 			<div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
 				<%= render 'services/services_card', :service => service %>
 			</div>
+			<div class="service-modal">
+				<%= render 'services/services_modal', service: service %>
+			</div>
 		<% else %>
 			<div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
 				<%= render 'services/services_card', :service => service %>
 			</div>
+			<div class="service-modal">
+				<%= render 'services/services_modal', service: service %>
+			</div>
 		<% end %>
 	<% end %>
 </div>
+
+<% @services.each do |s| %>
+<% end -%>
 
 <div id="content-list">
 	<% @contents.each do |c| %>
