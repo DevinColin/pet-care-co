@@ -2,18 +2,18 @@ class StaticPagesController < ApplicationController
 
   def home
     if current_user
-      @contents = Content.where("page like ?", "%home%")
+      @contents = Content.where(page: "Home")
     else
-      @contents = Content.where("page like ?", "%home%").reject { |c| !c.visible }[0..2]
+      @contents = Content.where(page: "Home").reject { |c| !c.visible }[0..2]
     end
   end
 
   def contact
     # gets content and simple forms for contact
     if current_user
-      @contents = Content.where("page like ?", "%contact%")
+      @contents = Content.where(page: "Contact")
     else
-      @contents = Content.where("page like ?", "%contact%").reject { |c| !c.visible }[0..2]
+      @contents = Content.where(page: "Contact").reject { |c| !c.visible }[0..2]
     end
   end
 

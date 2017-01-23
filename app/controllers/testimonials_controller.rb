@@ -3,9 +3,9 @@ class TestimonialsController < ApplicationController
 	def index
     	@testims = Testimonial.where(visible: true)
     	if current_user
-	    	@contents = Content.where("page like ?", "%testIMOnial%")
+	    	@contents = Content.where(page: "Testimonials")
     	else
-	    	@contents = Content.where("page like ?", "%testIMOnial%").reject { |c| !c.visible }[0..2]
+	    	@contents = Content.where(page: "Testimonials").reject { |c| !c.visible }[0..2]
     	end
 	end
 

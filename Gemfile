@@ -64,4 +64,3 @@ gem 'ckeditor'
 gem 'evil_icons'
 gem 'sendgrid'
 
-ruby '2.3.3'

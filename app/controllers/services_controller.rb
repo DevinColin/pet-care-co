@@ -6,9 +6,9 @@ class ServicesController < ApplicationController
 	    # name without pluralization or capitalization and it still produces
 	    # the desired result for our end user.
 	    if current_user
-	    	@contents = Content.where("page like ?", "%seRVice%")
+	    	@contents = Content.where(page: "Services")
 	    else
-	    	@contents = Content.where("page like ?", "%seRVice%").reject { |c| !c.visible }[0..2]
+	    	@contents = Content.where(page: "Services").reject { |c| !c.visible }[0..2]
 	    end
 	end
 	def show

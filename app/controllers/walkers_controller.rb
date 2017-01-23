@@ -3,9 +3,9 @@ class WalkersController < ApplicationController
 	def index
 		@walkers = Walker.all
 		if current_user
-	    	@contents = Content.where("page like ?", "%about%")
+	    	@contents = Content.where(page: "About")
 		else
-	    	@contents = Content.where("page like ?", "%about%").reject { |c| !c.visible }[0..2]
+	    	@contents = Content.where(page: "About").reject { |c| !c.visible }[0..2]
 		end
 	end
 

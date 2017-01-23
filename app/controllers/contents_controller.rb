@@ -25,6 +25,10 @@ class ContentsController < ApplicationController
 		@content = Content.find(params[:id])		
 	end
 	def update
+		path = page_paths[page_names.find_index(content_params[:page])]
+		if !current_user
+			redirect_to "/"
+		end
 		@content = Content.find(params[:id])
 		@content.update(content_params)
 		redirect_to "#{@content.path}"
@@ -50,7 +54,7 @@ class ContentsController < ApplicationController
 		["/", "/walkers", "/services", "/testimonials", "/contact"]
 	end
 	def page_names
-		["Home", "About (walkers index)", "Services", "Testimonials", "Contact"]
+		["Home", "About", "Services", "Testimonials", "Contact"]
 	end
 
 
