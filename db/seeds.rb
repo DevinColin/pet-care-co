@@ -188,8 +188,11 @@ if s.empty?
     s4.save
 end
 
-u = User.new
-u.email = "devin@email.com"
-u.password = "password"
-u.admin = true
-u.save!
+u = User.all
+if u.empty?
+  u = User.new
+  u.email = "devin@email.com"
+  u.password = "password"
+  u.admin = true
+  u.save!
+end
